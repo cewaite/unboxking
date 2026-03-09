@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://cionmhdsygvto"]
+
+[ext_resource type="Script" uid="uid://c1frko08u0bop" path="res://objects/box/box.gd" id="1_adad5"]
+[ext_resource type="PackedScene" uid="uid://hj03sgu06i3p" path="res://prefabs/hurtbox/hurtbox.tscn" id="1_xv1ks"]
+[ext_resource type="Script" uid="uid://bu1r182oet3bp" path="res://prefabs/components/health_component.gd" id="2_adad5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c6eo8"]
+size = Vector2(80, 80)
+
+[node name="Box" type="RigidBody2D" unique_id=854998726]
+collision_layer = 32
+collision_mask = 111
+mass = 5.0
+script = ExtResource("1_adad5")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=544953936]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.9993019, 1.9986321)
+color = Color(0.6627451, 0.47058824, 0.20784314, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1340532409]
+shape = SubResource("RectangleShape2D_c6eo8")
+
+[node name="Hurtbox" parent="." unique_id=1132817771 node_paths=PackedStringArray("health_comp") instance=ExtResource("1_xv1ks")]
+health_comp = NodePath("../Components/HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1507007768]
+shape = SubResource("RectangleShape2D_c6eo8")
+
+[node name="Components" type="Node" parent="." unique_id=1728868619]
+
+[node name="HealthComponent" type="Node" parent="Components" unique_id=135508255]
+script = ExtResource("2_adad5")
+max_health = 1
+metadata/_custom_type_script = "uid://bu1r182oet3bp"

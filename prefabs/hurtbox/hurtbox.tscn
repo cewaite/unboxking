@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://hj03sgu06i3p"]
+
+[ext_resource type="Script" uid="uid://cvhdmlfh14r40" path="res://prefabs/hurtbox/hurtbox.gd" id="1_softr"]
+
+[node name="Hurtbox" type="Area2D" unique_id=1132817771]
+collision_layer = 256
+collision_mask = 128
+input_pickable = false
+script = ExtResource("1_softr")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bfrrofdcfunxx"]
+
+[ext_resource type="PackedScene" uid="uid://c4lsvnv6n30d2" path="res://entities/dummy/dummy.tscn" id="1_uf0eb"]
+[ext_resource type="Script" uid="uid://nbsish7s5tf3" path="res://prefabs/components/random_movement_component.gd" id="2_50jgi"]
+[ext_resource type="Script" uid="uid://ipjkpdea13tc" path="res://entities/dummy/moving_dummy/moving_dummy.gd" id="2_g4txq"]
+
+[node name="MovingDummy" unique_id=957002895 node_paths=PackedStringArray("move_comp") instance=ExtResource("1_uf0eb")]
+script = ExtResource("2_g4txq")
+move_comp = NodePath("Components/RandomMovementComponent")
+
+[node name="HealthComponent" parent="Components" parent_id_path=PackedInt32Array(114817293) index="0" unique_id=302283978]
+max_health = 5
+
+[node name="RandomMovementComponent" type="Node" parent="Components" parent_id_path=PackedInt32Array(114817293) index="1" unique_id=265959139 node_paths=PackedStringArray("parent", "jump_comp")]
+script = ExtResource("2_50jgi")
+parent = NodePath("../..")
+jump_comp = NodePath("../JumpComponent")

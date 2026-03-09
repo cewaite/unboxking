@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://n261q26g0c8c"]
+
+[ext_resource type="Script" uid="uid://c62k2q6ct48p6" path="res://entities/hand/hand.gd" id="1_hhw0q"]
+[ext_resource type="Texture2D" uid="uid://fgdpsr1cvnew" path="res://icon.svg" id="2_ondc2"]
+[ext_resource type="PackedScene" uid="uid://bx76hp6pft0pd" path="res://prefabs/hitbox/hitbox.tscn" id="3_ondc2"]
+[ext_resource type="Script" uid="uid://c2xc5w04hlffh" path="res://prefabs/components/push_component.gd" id="4_1ien0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wijo7"]
+size = Vector2(128, 128)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1ien0"]
+radius = 30.0
+height = 120.0
+
+[node name="Hand" type="Node2D" unique_id=362709495]
+
+[node name="HandCharacterBody2D" type="CharacterBody2D" parent="." unique_id=662445046 node_paths=PackedStringArray("push_comp", "punch_hitbox")]
+collision_layer = 2
+collision_mask = 101
+input_pickable = true
+script = ExtResource("1_hhw0q")
+push_comp = NodePath("../Components/PushComponent")
+punch_hitbox = NodePath("PunchHitbox")
+
+[node name="HandSprite2D" type="Sprite2D" parent="HandCharacterBody2D" unique_id=1932599022]
+texture = ExtResource("2_ondc2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HandCharacterBody2D" unique_id=498075268]
+shape = SubResource("RectangleShape2D_wijo7")
+
+[node name="PunchHitbox" parent="HandCharacterBody2D" unique_id=862417803 node_paths=PackedStringArray("collider") instance=ExtResource("3_ondc2")]
+collider = NodePath("CollisionShape2D")
+hit_slows_time = true
+hit_slow_factor = 0.1
+hit_slow_time = 0.05
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HandCharacterBody2D/PunchHitbox" unique_id=562466585]
+position = Vector2(0, -65)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_1ien0")
+debug_color = Color(0.77490634, 0, 0.20784777, 0.41960785)
+
+[node name="Components" type="Node" parent="." unique_id=1379440192]
+
+[node name="PushComponent" type="Node" parent="Components" unique_id=521776660 node_paths=PackedStringArray("parent")]
+script = ExtResource("4_1ien0")
+parent = NodePath("../../HandCharacterBody2D")
+push_force = 20.0
+metadata/_custom_type_script = "uid://c2xc5w04hlffh"
+
+[connection signal="mouse_entered" from="HandCharacterBody2D" to="HandCharacterBody2D" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="HandCharacterBody2D" to="HandCharacterBody2D" method="_on_mouse_exited"]

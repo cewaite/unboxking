@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://c4lsvnv6n30d2"]
+
+[ext_resource type="Script" uid="uid://cu7sf1kuaoirp" path="res://entities/dummy/dummy.gd" id="1_1mvqt"]
+[ext_resource type="PackedScene" uid="uid://hj03sgu06i3p" path="res://prefabs/hurtbox/hurtbox.tscn" id="1_nih5e"]
+[ext_resource type="Script" uid="uid://bu1r182oet3bp" path="res://prefabs/components/health_component.gd" id="2_vlfdi"]
+[ext_resource type="Script" uid="uid://dwpdh40m7kjln" path="res://prefabs/components/jump_component.gd" id="4_uo211"]
+[ext_resource type="Script" uid="uid://81fattl2scd8" path="res://prefabs/components/gravity_component.gd" id="5_cshfw"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5sylg"]
+radius = 20.0
+height = 100.0
+
+[node name="Dummy" type="CharacterBody2D" unique_id=1212968021 node_paths=PackedStringArray("jump_comp", "grav_comp")]
+collision_layer = 32
+collision_mask = 111
+script = ExtResource("1_1mvqt")
+jump_comp = NodePath("Components/JumpComponent")
+grav_comp = NodePath("Components/GravityComponent")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1037504340]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -50.0
+offset_right = 0.0069828033
+offset_bottom = 0.034217834
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.9993019, 1.9986321)
+color = Color(0.6627451, 0.47058824, 0.20784314, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=994493970]
+shape = SubResource("CapsuleShape2D_5sylg")
+
+[node name="Hurtbox" parent="." unique_id=1132817771 node_paths=PackedStringArray("health_comp") instance=ExtResource("1_nih5e")]
+health_comp = NodePath("../Components/HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1869529997]
+shape = SubResource("CapsuleShape2D_5sylg")
+
+[node name="Components" type="Node" parent="." unique_id=114817293]
+
+[node name="HealthComponent" type="Node" parent="Components" unique_id=302283978]
+script = ExtResource("2_vlfdi")
+max_health = 3
+metadata/_custom_type_script = "uid://bu1r182oet3bp"
+
+[node name="JumpComponent" type="Node" parent="Components" unique_id=1374353017 node_paths=PackedStringArray("parent")]
+script = ExtResource("4_uo211")
+parent = NodePath("../..")
+metadata/_custom_type_script = "uid://dwpdh40m7kjln"
+
+[node name="GravityComponent" type="Node" parent="Components" unique_id=1939199686 node_paths=PackedStringArray("parent")]
+script = ExtResource("5_cshfw")
+parent = NodePath("../..")
+metadata/_custom_type_script = "uid://81fattl2scd8"
