@@ -1,7 +1,6 @@
 class_name MovementComponent extends Component
 
 @export var parent: CharacterBody2D
-@export var input_comp: InputComponent
 
 @export var run_speed: float = 600.0
 @export var accel: float = 1800.0
@@ -10,8 +9,8 @@ class_name MovementComponent extends Component
 func get_component_name() -> StringName: 
 	return "MovementComponent"
 
-func handle_move(delta: float) -> void:
-	var target_x_velocity = (input_comp.get_movement_input() * run_speed)
+func handle_move(delta: float, x_direction: float) -> void:
+	var target_x_velocity = (x_direction * run_speed)
 	parent.velocity.x = move_toward(
 		parent.velocity.x,
 		target_x_velocity,

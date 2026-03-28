@@ -2,7 +2,8 @@ class_name HealthComponent extends Component
 
 signal taken_damage()
 
-@export var max_health: int
+@export var parent: Node2D
+@export var max_health: int = 1
 var curr_health: int
 
 func _ready():
@@ -28,4 +29,7 @@ func heal(val):
 	curr_health = min(curr_health + val, max_health)
 
 func die():
-	owner.die()
+	if parent:
+		parent.die()
+	else:
+		owner.die()

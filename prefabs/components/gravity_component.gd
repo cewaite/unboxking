@@ -14,5 +14,3 @@ func get_component_name() -> StringName:
 func apply_gravity(delta: float):
 	if not parent.is_on_floor():
 		parent.velocity.y += gravity_falling * delta
-	elif parent.velocity.y != 0.0:
-		parent.velocity.y = 0.0

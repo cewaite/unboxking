@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://covqq7wokqniy"]
+
+[ext_resource type="Script" uid="uid://dbqma7iydnuee" path="res://globals/game_manager/game_manager.gd" id="1_e8pdb"]
+[ext_resource type="PackedScene" uid="uid://bkdvn16v0n73l" path="res://scenes/boss_demo/boss_demo.tscn" id="2_ctu20"]
+
+[node name="GameManager" type="Node" unique_id=1768220721 node_paths=PackedStringArray("level", "boss", "knight_spawn")]
+script = ExtResource("1_e8pdb")
+level = NodePath("BossDemo")
+boss = NodePath("BossDemo/Boss")
+knight_spawn = NodePath("BossDemo/KnightSpawnMarker2D")
+
+[node name="BossDemo" parent="." unique_id=830802321 instance=ExtResource("2_ctu20")]
+
+[editable path="BossDemo"]

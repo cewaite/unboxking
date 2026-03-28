@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Unboxking"
-run/main_scene="uid://bkdvn16v0n73l"
+run/main_scene="uid://covqq7wokqniy"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 

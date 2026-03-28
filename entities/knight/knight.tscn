@@ -1,0 +1,221 @@
+[gd_scene format=3 uid="uid://b2go38g2ml5gq"]
+
+[ext_resource type="Script" uid="uid://bb8otqtegwtly" path="res://entities/knight/knight.gd" id="1_ojclw"]
+[ext_resource type="PackedScene" uid="uid://hj03sgu06i3p" path="res://prefabs/hurtbox/hurtbox.tscn" id="2_2a4lh"]
+[ext_resource type="Script" uid="uid://bu1r182oet3bp" path="res://prefabs/components/health_component.gd" id="4_388i6"]
+[ext_resource type="Script" uid="uid://cwfr481rcycrm" path="res://prefabs/components/movement_component.gd" id="5_q8oeo"]
+[ext_resource type="Script" uid="uid://diqo1lfc10xsn" path="res://prefabs/states/stun.gd" id="5_vcol2"]
+[ext_resource type="Script" uid="uid://dwpdh40m7kjln" path="res://prefabs/components/jump_component.gd" id="6_vcol2"]
+[ext_resource type="Script" uid="uid://512064ohna84" path="res://prefabs/states/attack.gd" id="6_wb40x"]
+[ext_resource type="Script" uid="uid://c2xc5w04hlffh" path="res://prefabs/components/push_component.gd" id="7_clrcm"]
+[ext_resource type="Script" uid="uid://cv5vcy7cjvoro" path="res://prefabs/states/dodge.gd" id="7_jtaml"]
+[ext_resource type="Script" uid="uid://b43e1i04p325m" path="res://prefabs/states/state_machine.gd" id="8_2a4lh"]
+[ext_resource type="Script" uid="uid://81fattl2scd8" path="res://prefabs/components/gravity_component.gd" id="8_wb40x"]
+[ext_resource type="Script" uid="uid://b8qmltdnp6yk3" path="res://prefabs/components/random_input_component.gd" id="9_31d0f"]
+[ext_resource type="PackedScene" uid="uid://b5gp1jcdccylc" path="res://tools/vector_raycast/vector_raycast.tscn" id="9_g5pp6"]
+[ext_resource type="Script" uid="uid://kn30w6clja20" path="res://prefabs/states/move.gd" id="9_swig6"]
+[ext_resource type="Script" uid="uid://bnmaosl2movhy" path="res://prefabs/states/jump.gd" id="11_388i6"]
+[ext_resource type="Script" uid="uid://b80s2lsqpe33r" path="res://prefabs/components/attack_component.gd" id="12_vcol2"]
+[ext_resource type="Script" uid="uid://cashwcc1i8jx7" path="res://prefabs/components/dodge_component.gd" id="13_bakul"]
+[ext_resource type="Script" uid="uid://b53s45swopm7w" path="res://prefabs/components/smart_input_component.gd" id="13_wb40x"]
+[ext_resource type="Script" uid="uid://gwg7lef0mss2" path="res://prefabs/components/impact_frame_component.gd" id="14_g5pp6"]
+[ext_resource type="PackedScene" uid="uid://bx76hp6pft0pd" path="res://prefabs/hitbox/hitbox.tscn" id="15_clrcm"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jtaml"]
+radius = 20.0
+height = 100.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wb40x"]
+radius = 20.0
+height = 90.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bakul"]
+radius = 200.0
+
+[node name="Knight" type="CharacterBody2D" unique_id=315108858 node_paths=PackedStringArray("input_comp", "grav_comp", "push_comp", "hurtbox")]
+collision_layer = 5
+collision_mask = 126
+script = ExtResource("1_ojclw")
+input_comp = NodePath("Components/SmartInputComponent")
+grav_comp = NodePath("Components/GravityComponent")
+push_comp = NodePath("Components/PushComponent")
+hurtbox = NodePath("Hurtbox")
+
+[node name="StateMachine" type="Node" parent="." unique_id=516543897 node_paths=PackedStringArray("init_state")]
+script = ExtResource("8_2a4lh")
+init_state = NodePath("Move")
+
+[node name="Move" type="Node" parent="StateMachine" unique_id=1900408241 node_paths=PackedStringArray("input_comp", "move_comp")]
+script = ExtResource("9_swig6")
+input_comp = NodePath("../../Components/SmartInputComponent")
+move_comp = NodePath("../../Components/MovementComponent")
+
+[node name="Jump" type="Node" parent="StateMachine" unique_id=1659904974 node_paths=PackedStringArray("jump_comp")]
+script = ExtResource("11_388i6")
+jump_comp = NodePath("../../Components/JumpComponent")
+
+[node name="Stun" type="Node" parent="StateMachine" unique_id=1795118223]
+script = ExtResource("5_vcol2")
+
+[node name="Dodge" type="Node" parent="StateMachine" unique_id=1097626089 node_paths=PackedStringArray("input_comp", "dodge_comp")]
+script = ExtResource("7_jtaml")
+input_comp = NodePath("../../Components/SmartInputComponent")
+dodge_comp = NodePath("../../Components/DodgeComponent")
+
+[node name="HorizontalAttack" type="Node" parent="StateMachine" unique_id=194051138 node_paths=PackedStringArray("attack_comp")]
+script = ExtResource("6_wb40x")
+attack_comp = NodePath("../../Components/HorizontalAttackComponent")
+
+[node name="VerticalAttack" type="Node" parent="StateMachine" unique_id=1182101785 node_paths=PackedStringArray("attack_comp")]
+script = ExtResource("6_wb40x")
+attack_comp = NodePath("../../Components/VerticalAttackComponent")
+
+[node name="Components" type="Node" parent="." unique_id=682901996]
+
+[node name="SmartInputComponent" type="Node" parent="Components" unique_id=1124637606 node_paths=PackedStringArray("parent", "random_input_comp")]
+script = ExtResource("13_wb40x")
+parent = NodePath("../..")
+random_input_comp = NodePath("../RandomInputComponent")
+metadata/_custom_type_script = "uid://b53s45swopm7w"
+
+[node name="RandomInputComponent" type="Node" parent="Components" unique_id=1508252243 node_paths=PackedStringArray("parent")]
+script = ExtResource("9_31d0f")
+parent = NodePath("../..")
+metadata/_custom_type_script = "uid://b8qmltdnp6yk3"
+
+[node name="GravityComponent" type="Node" parent="Components" unique_id=114086461 node_paths=PackedStringArray("parent")]
+script = ExtResource("8_wb40x")
+parent = NodePath("../..")
+metadata/_custom_type_script = "uid://81fattl2scd8"
+
+[node name="PushComponent" type="Node" parent="Components" unique_id=1591488087 node_paths=PackedStringArray("parent")]
+script = ExtResource("7_clrcm")
+parent = NodePath("../..")
+push_force = 0.0
+metadata/_custom_type_script = "uid://c2xc5w04hlffh"
+
+[node name="JumpComponent" type="Node" parent="Components" unique_id=594971946 node_paths=PackedStringArray("parent")]
+script = ExtResource("6_vcol2")
+parent = NodePath("../..")
+metadata/_custom_type_script = "uid://dwpdh40m7kjln"
+
+[node name="MovementComponent" type="Node" parent="Components" unique_id=1367486074 node_paths=PackedStringArray("parent")]
+script = ExtResource("5_q8oeo")
+parent = NodePath("../..")
+metadata/_custom_type_script = "uid://cwfr481rcycrm"
+
+[node name="DodgeComponent" type="Node" parent="Components" unique_id=1023546614 node_paths=PackedStringArray("parent")]
+script = ExtResource("13_bakul")
+parent = NodePath("../..")
+max_dodge_speed = 3000.0
+accel = 20000.0
+dodge_duration = 0.25
+dodge_cooldown = 1.0
+metadata/_custom_type_script = "uid://d01u5bfq4cdnk"
+
+[node name="HealthComponent" type="Node" parent="Components" unique_id=517395176]
+script = ExtResource("4_388i6")
+max_health = 5
+metadata/_custom_type_script = "uid://bu1r182oet3bp"
+
+[node name="HorizontalAttackComponent" type="Node" parent="Components" unique_id=1867202821 node_paths=PackedStringArray("other_attack_comps", "attack_hitbox", "attack_detector")]
+script = ExtResource("12_vcol2")
+other_attack_comps = [NodePath("../VerticalAttackComponent")]
+attack_hitbox = NodePath("../../HorizontalAttackHitbox")
+attack_detector = NodePath("../../HorizontalAttackDetector")
+attack_cooldown = 0.5
+flip_attack = true
+
+[node name="VerticalAttackComponent" type="Node" parent="Components" unique_id=971317205 node_paths=PackedStringArray("other_attack_comps", "attack_hitbox", "attack_detector")]
+script = ExtResource("12_vcol2")
+other_attack_comps = [NodePath("../HorizontalAttackComponent")]
+attack_hitbox = NodePath("../../VerticalAttackHitbox")
+attack_detector = NodePath("../../VerticalAttackDetector")
+attack_cooldown = 0.5
+
+[node name="ImpactFrameComponent" type="Node" parent="Components" unique_id=1135400390]
+script = ExtResource("14_g5pp6")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=133907638]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -50.0
+offset_right = 0.0069828033
+offset_bottom = 0.034217834
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.9993019, 1.9986321)
+color = Color(0.6627451, 0.47058824, 0.20784314, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1935742050]
+shape = SubResource("CapsuleShape2D_jtaml")
+
+[node name="Hurtbox" parent="." unique_id=1132817771 node_paths=PackedStringArray("collider", "health_comp") instance=ExtResource("2_2a4lh")]
+collider = NodePath("CollisionShape2D")
+health_comp = NodePath("../Components/HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=836739694]
+shape = SubResource("CapsuleShape2D_jtaml")
+
+[node name="VerticalAttackHitbox" parent="." unique_id=862417803 node_paths=PackedStringArray("collider") instance=ExtResource("15_clrcm")]
+collider = NodePath("CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VerticalAttackHitbox" unique_id=316990480]
+position = Vector2(0, -75)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_wb40x")
+debug_color = Color(0.64989084, 0.29958317, 0.04346002, 0.41960785)
+
+[node name="VerticalAttackDetector" type="Area2D" parent="." unique_id=1898221273]
+collision_layer = 4
+collision_mask = 2
+input_pickable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VerticalAttackDetector" unique_id=544295637]
+position = Vector2(0, -75)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_wb40x")
+debug_color = Color(0.64989084, 0.29958317, 0.04346002, 0.41960785)
+
+[node name="HorizontalAttackHitbox" parent="." unique_id=500709704 node_paths=PackedStringArray("collider") instance=ExtResource("15_clrcm")]
+collider = NodePath("CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HorizontalAttackHitbox" unique_id=1239251598]
+position = Vector2(50, 0)
+shape = SubResource("CapsuleShape2D_wb40x")
+debug_color = Color(0.7764706, 0, 0.20784314, 0.41960785)
+
+[node name="HorizontalAttackDetector" type="Area2D" parent="." unique_id=1720648753]
+collision_layer = 4
+collision_mask = 2
+input_pickable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HorizontalAttackDetector" unique_id=1522987089]
+position = Vector2(50, 0)
+shape = SubResource("CapsuleShape2D_wb40x")
+debug_color = Color(0.64989084, 0.29958317, 0.04346002, 0.41960785)
+
+[node name="ImmediateVision" type="Area2D" parent="." unique_id=61046303]
+collision_layer = 4
+collision_mask = 58
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ImmediateVision" unique_id=813888398]
+shape = SubResource("CircleShape2D_bakul")
+debug_color = Color(0.6509804, 0.29803923, 0.043137256, 0.41960785)
+
+[node name="VectorRayCast" parent="." unique_id=116647094 instance=ExtResource("9_g5pp6")]
+
+[node name="TargetRayCast" parent="." unique_id=2071279542 instance=ExtResource("9_g5pp6")]
+
+[connection signal="taken_damage" from="Components/HealthComponent" to="StateMachine/Move" method="_on_health_component_taken_damage"]
+[connection signal="taken_damage" from="Components/HealthComponent" to="StateMachine/Jump" method="_on_health_component_taken_damage"]
+[connection signal="taken_damage" from="Components/HealthComponent" to="Components/ImpactFrameComponent" method="_on_health_component_taken_damage"]
+[connection signal="body_entered" from="VerticalAttackDetector" to="Components/SmartInputComponent" method="_on_vertical_attack_detector_body_entered"]
+[connection signal="body_exited" from="VerticalAttackDetector" to="Components/SmartInputComponent" method="_on_vertical_attack_detector_body_exited"]
+[connection signal="body_entered" from="HorizontalAttackDetector" to="Components/SmartInputComponent" method="_on_horizontal_attack_detector_body_entered"]
+[connection signal="body_exited" from="HorizontalAttackDetector" to="Components/SmartInputComponent" method="_on_horizontal_attack_detector_body_exited"]
+[connection signal="body_entered" from="ImmediateVision" to="Components/SmartInputComponent" method="_on_immediate_vision_body_entered"]

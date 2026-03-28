@@ -68,6 +68,7 @@ func _physics_process(delta: float) -> void:
 	push_comp.apply_push()
 	
 	# Move the hand
+	#print_debug(owner.name, " velocity length: ", velocity.length())
 	move_and_slide()
 
 
@@ -98,3 +99,6 @@ func _on_mouse_entered() -> void:
 
 func _on_mouse_exited() -> void:
 	is_mouse_hovering = false
+
+func die():
+	owner.queue_free()

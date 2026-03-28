@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://bkdvn16v0n73l"]
 
 [ext_resource type="PackedScene" uid="uid://bxbtp4fmhvjn3" path="res://entities/boss/boss.tscn" id="1_x5frj"]
-[ext_resource type="PackedScene" uid="uid://bfrrofdcfunxx" path="res://entities/dummy/moving_dummy/moving_dummy.tscn" id="4_njmbt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x5frj"]
 size = Vector2(1280, 40)
@@ -50,6 +49,8 @@ shape = SubResource("RectangleShape2D_7vhjq")
 
 [node name="CeilingStaticBody2D" type="StaticBody2D" parent="." unique_id=1911627791]
 position = Vector2(640, 0)
+collision_layer = 64
+collision_mask = 127
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CeilingStaticBody2D" unique_id=209530396]
 shape = SubResource("RectangleShape2D_x5frj")
@@ -57,10 +58,5 @@ shape = SubResource("RectangleShape2D_x5frj")
 [node name="Boss" parent="." unique_id=1601614142 instance=ExtResource("1_x5frj")]
 position = Vector2(640, 425)
 
-[node name="MovingDummy" parent="." unique_id=957002895 instance=ExtResource("4_njmbt")]
-position = Vector2(649, 613)
-
-[node name="HealthComponent" parent="MovingDummy/Components" parent_id_path=PackedInt32Array(957002895, 114817293) index="0" unique_id=302283978]
-max_health = 1000
-
-[editable path="MovingDummy"]
+[node name="KnightSpawnMarker2D" type="Marker2D" parent="." unique_id=1582389302]
+position = Vector2(637, 409)

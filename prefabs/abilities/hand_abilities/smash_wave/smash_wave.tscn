@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://cjiblqp6287j2"]
+
+[ext_resource type="PackedScene" uid="uid://bx76hp6pft0pd" path="res://prefabs/hitbox/hitbox.tscn" id="1_stg5f"]
+[ext_resource type="Script" uid="uid://cdx50buyrhffk" path="res://prefabs/abilities/hand_abilities/smash_wave/smash_wave.gd" id="1_vomrh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ad6jh"]
+size = Vector2(51, 166)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vomrh"]
+size = Vector2(45, 177)
+
+[node name="SmashWave" type="Node2D" unique_id=1091143646]
+script = ExtResource("1_vomrh")
+
+[node name="LeftWave" type="CharacterBody2D" parent="." unique_id=130219878]
+position = Vector2(-70, -100)
+collision_layer = 8
+collision_mask = 68
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWave" unique_id=1398644721]
+position = Vector2(-10, 17)
+shape = SubResource("RectangleShape2D_ad6jh")
+debug_color = Color(1, 1, 1, 0.9882353)
+
+[node name="LeftHitbox" parent="LeftWave" unique_id=305413120 node_paths=PackedStringArray("collider") instance=ExtResource("1_stg5f")]
+collider = NodePath("CollisionShape2D")
+collider_disabled = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWave/LeftHitbox" unique_id=1065656168]
+position = Vector2(-30, 11.5)
+shape = SubResource("RectangleShape2D_vomrh")
+debug_color = Color(0.9914383, 0, 0.27157223, 0.41960785)
+
+[node name="RightWave" type="CharacterBody2D" parent="." unique_id=1734934603]
+position = Vector2(70, -100)
+collision_layer = 8
+collision_mask = 68
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RightWave" unique_id=307710526]
+position = Vector2(10, 17)
+shape = SubResource("RectangleShape2D_ad6jh")
+debug_color = Color(1, 1, 1, 0.9882353)
+
+[node name="RightHitbox" parent="RightWave" unique_id=862417803 node_paths=PackedStringArray("collider") instance=ExtResource("1_stg5f")]
+collider = NodePath("CollisionShape2D")
+collider_disabled = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWave/RightHitbox" unique_id=365888084]
+position = Vector2(30, 11.5)
+shape = SubResource("RectangleShape2D_vomrh")
+debug_color = Color(0.99215686, 0, 0.27058825, 0.41960785)
+
+[connection signal="area_entered" from="LeftWave/LeftHitbox" to="." method="_on_left_hitbox_area_entered"]
+[connection signal="area_entered" from="RightWave/RightHitbox" to="." method="_on_right_hitbox_area_entered"]

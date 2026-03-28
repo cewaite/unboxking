@@ -6,10 +6,12 @@
 [ext_resource type="Script" uid="uid://c2xc5w04hlffh" path="res://prefabs/components/push_component.gd" id="4_g4txq"]
 [ext_resource type="Script" uid="uid://cwfr481rcycrm" path="res://prefabs/components/movement_component.gd" id="4_o2pgr"]
 [ext_resource type="PackedScene" uid="uid://b5gp1jcdccylc" path="res://tools/vector_raycast/vector_raycast.tscn" id="5_oxiq7"]
+[ext_resource type="Script" uid="uid://b43e1i04p325m" path="res://prefabs/states/state_machine.gd" id="6_7jukh"]
+[ext_resource type="Script" uid="uid://kn30w6clja20" path="res://prefabs/states/move.gd" id="7_2ouwf"]
+[ext_resource type="Script" uid="uid://bnmaosl2movhy" path="res://prefabs/states/jump.gd" id="8_7d02p"]
 
-[node name="MovingDummy" unique_id=957002895 node_paths=PackedStringArray("move_comp", "push_comp") instance=ExtResource("1_uf0eb")]
+[node name="MovingDummy" unique_id=957002895 node_paths=PackedStringArray("push_comp") instance=ExtResource("1_uf0eb")]
 script = ExtResource("2_g4txq")
-move_comp = NodePath("Components/MovementComponent")
 push_comp = NodePath("Components/PushComponent")
 stun_time = 2.0
 
@@ -21,14 +23,10 @@ metadata/_custom_type_script = "uid://b8qmltdnp6yk3"
 [node name="HealthComponent" parent="Components" parent_id_path=PackedInt32Array(114817293) index="1" unique_id=302283978]
 max_health = 5
 
-[node name="MovementComponent" type="Node" parent="Components" parent_id_path=PackedInt32Array(114817293) index="2" unique_id=1176457631 node_paths=PackedStringArray("parent", "input_comp")]
+[node name="MovementComponent" type="Node" parent="Components" parent_id_path=PackedInt32Array(114817293) index="2" unique_id=1176457631 node_paths=PackedStringArray("parent")]
 script = ExtResource("4_o2pgr")
 parent = NodePath("../..")
-input_comp = NodePath("../RandomInputComponent")
 metadata/_custom_type_script = "uid://cwfr481rcycrm"
-
-[node name="JumpComponent" parent="Components" parent_id_path=PackedInt32Array(114817293) index="3" unique_id=1374353017 node_paths=PackedStringArray("input_comp")]
-input_comp = NodePath("../RandomInputComponent")
 
 [node name="PushComponent" type="Node" parent="Components" parent_id_path=PackedInt32Array(114817293) index="4" unique_id=1847451993 node_paths=PackedStringArray("parent")]
 script = ExtResource("4_g4txq")
@@ -36,8 +34,23 @@ parent = NodePath("../..")
 push_force = 0.2
 metadata/_custom_type_script = "uid://c2xc5w04hlffh"
 
-[node name="VectorRayCast" parent="." index="4" unique_id=571731270 instance=ExtResource("5_oxiq7")]
+[node name="StateMachine" type="Node" parent="." index="4" unique_id=687288241 node_paths=PackedStringArray("init_state")]
+script = ExtResource("6_7jukh")
+init_state = NodePath("Move")
 
-[node name="TargetRayCast" parent="." index="5" unique_id=116647094 instance=ExtResource("5_oxiq7")]
+[node name="Move" type="Node" parent="StateMachine" index="0" unique_id=429696471 node_paths=PackedStringArray("input_comp", "move_comp")]
+script = ExtResource("7_2ouwf")
+input_comp = NodePath("../../Components/RandomInputComponent")
+move_comp = NodePath("../../Components/MovementComponent")
+
+[node name="Jump" type="Node" parent="StateMachine" index="1" unique_id=429545074 node_paths=PackedStringArray("jump_comp")]
+script = ExtResource("8_7d02p")
+jump_comp = NodePath("../../Components/JumpComponent")
+
+[node name="VectorRayCast" parent="." index="5" unique_id=571731270 instance=ExtResource("5_oxiq7")]
+visible = false
+
+[node name="TargetRayCast" parent="." index="6" unique_id=116647094 instance=ExtResource("5_oxiq7")]
+visible = false
 
 [connection signal="taken_damage" from="Components/HealthComponent" to="." method="_on_health_component_taken_damage"]

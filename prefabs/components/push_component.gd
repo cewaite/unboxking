@@ -14,17 +14,17 @@ func apply_push():
 		
 		if collider is RigidBody2D:
 			# Only parent vector length going into the impact - colliders velocity into impact
-			var impact_speed = parent.velocity.dot(push_dir) - collider.linear_velocity.dot(push_dir)
-			impact_speed = max(0., impact_speed)
+			var impact_speed = parent.velocity.dot(push_dir) #- collider.linear_velocity.dot(push_dir)
+			impact_speed = max(0.0, impact_speed)
 			collider.apply_central_impulse(push_dir * impact_speed * push_force)
 			
 		elif collider is CharacterBody2D:
 			#if parent is Hand:
 				#print_debug("Velocity of dummy before impact: " + str(collider.velocity))
-			var impact_speed = parent.velocity.dot(push_dir) - collider.velocity.dot(push_dir)
-			impact_speed = max(0., impact_speed)
+			var impact_speed = parent.velocity.dot(push_dir) #- collider.velocity.dot(push_dir)
+			impact_speed = max(0.0, impact_speed)
 			var impact_force_vector = push_dir * impact_speed * push_force
-			#print_debug(parent.name + " impacts " + collider.name + " with strength: " + str(impact_force_vector.length()))
 			collider.velocity += impact_force_vector
+			#print_debug(parent.name + " impacts " + collider.name + " with strength: " + str(impact_force_vector.length()))
 			#if parent is Hand:
 				#print_debug("Velocity of dummy after impact: " + str(collider.velocity))

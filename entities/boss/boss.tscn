@@ -2,8 +2,18 @@
 
 [ext_resource type="Texture2D" uid="uid://fgdpsr1cvnew" path="res://icon.svg" id="1_4kg7w"]
 [ext_resource type="PackedScene" uid="uid://n261q26g0c8c" path="res://entities/hand/hand.tscn" id="1_820jm"]
+[ext_resource type="Script" uid="uid://dyoegjnklkd6" path="res://entities/boss/boss.gd" id="1_c5o42"]
 
-[node name="Boss" type="Node2D" unique_id=1601614142]
+[node name="Boss" type="Node2D" unique_id=1601614142 node_paths=PackedStringArray("left_hand", "right_hand")]
+script = ExtResource("1_c5o42")
+left_hand = NodePath("LeftHand/HandCharacterBody2D")
+right_hand = NodePath("RightHand/HandCharacterBody2D")
+
+[node name="LeftHand" parent="." unique_id=559794993 instance=ExtResource("1_820jm")]
+position = Vector2(400, 0)
+
+[node name="PunchHitbox" parent="LeftHand/HandCharacterBody2D" parent_id_path=PackedInt32Array(559794993, 662445046) index="2" unique_id=862417803]
+monitoring = true
 
 [node name="RightHand" parent="." unique_id=362709495 instance=ExtResource("1_820jm")]
 position = Vector2(-400, 0)
@@ -15,5 +25,5 @@ scale = Vector2(1.5, 1.5)
 [node name="HeadSprite2D" type="Sprite2D" parent="Head" unique_id=830149304]
 texture = ExtResource("1_4kg7w")
 
-[node name="LeftHand" parent="." unique_id=559794993 instance=ExtResource("1_820jm")]
-position = Vector2(400, 0)
+[editable path="LeftHand"]
+[editable path="RightHand"]
