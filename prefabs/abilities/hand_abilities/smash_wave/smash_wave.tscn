@@ -31,6 +31,13 @@ position = Vector2(-30, 11.5)
 shape = SubResource("RectangleShape2D_vomrh")
 debug_color = Color(0.9914383, 0, 0.27157223, 0.41960785)
 
+[node name="ColorRect" type="ColorRect" parent="LeftWave" unique_id=1381212484]
+offset_left = -35.0
+offset_top = -66.0
+offset_right = 5.0
+offset_bottom = -26.0
+scale = Vector2(1.2677575, 4.151664)
+
 [node name="RightWave" type="CharacterBody2D" parent="." unique_id=1734934603]
 position = Vector2(70, -100)
 collision_layer = 8
@@ -49,6 +56,13 @@ collider_disabled = false
 position = Vector2(30, 11.5)
 shape = SubResource("RectangleShape2D_vomrh")
 debug_color = Color(0.99215686, 0, 0.27058825, 0.41960785)
+
+[node name="ColorRect" type="ColorRect" parent="RightWave" unique_id=1171545885]
+offset_left = -16.0
+offset_top = -68.0
+offset_right = 24.0
+offset_bottom = -28.0
+scale = Vector2(1.2758547, 4.198588)
 
 [connection signal="area_entered" from="LeftWave/LeftHitbox" to="." method="_on_left_hitbox_area_entered"]
 [connection signal="area_entered" from="RightWave/RightHitbox" to="." method="_on_right_hitbox_area_entered"]

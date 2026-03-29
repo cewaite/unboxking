@@ -20,6 +20,7 @@
 [ext_resource type="Script" uid="uid://b53s45swopm7w" path="res://prefabs/components/smart_input_component.gd" id="13_wb40x"]
 [ext_resource type="Script" uid="uid://gwg7lef0mss2" path="res://prefabs/components/impact_frame_component.gd" id="14_g5pp6"]
 [ext_resource type="PackedScene" uid="uid://bx76hp6pft0pd" path="res://prefabs/hitbox/hitbox.tscn" id="15_clrcm"]
+[ext_resource type="PackedScene" uid="uid://d00bqe0wv1o0l" path="res://prefabs/health_bar/health_bar.tscn" id="18_lqkfn"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jtaml"]
 radius = 20.0
@@ -113,8 +114,10 @@ dodge_duration = 0.25
 dodge_cooldown = 1.0
 metadata/_custom_type_script = "uid://d01u5bfq4cdnk"
 
-[node name="HealthComponent" type="Node" parent="Components" unique_id=517395176]
+[node name="HealthComponent" type="Node" parent="Components" unique_id=517395176 node_paths=PackedStringArray("parent", "health_bar")]
 script = ExtResource("4_388i6")
+parent = NodePath("../..")
+health_bar = NodePath("../../HealthBar")
 max_health = 5
 metadata/_custom_type_script = "uid://bu1r182oet3bp"
 
@@ -153,6 +156,12 @@ color = Color(0.6627451, 0.47058824, 0.20784314, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1935742050]
 shape = SubResource("CapsuleShape2D_jtaml")
+
+[node name="HealthBar" parent="." unique_id=761984071 instance=ExtResource("18_lqkfn")]
+offset_left = -50.0
+offset_top = -64.0
+offset_right = 50.0
+offset_bottom = -58.0
 
 [node name="Hurtbox" parent="." unique_id=1132817771 node_paths=PackedStringArray("collider", "health_comp") instance=ExtResource("2_2a4lh")]
 collider = NodePath("CollisionShape2D")

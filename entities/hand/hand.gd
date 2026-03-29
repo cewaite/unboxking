@@ -1,5 +1,9 @@
 class_name Hand extends CharacterBody2D
 
+signal controlled_hand(hand)
+
+@export var parent_boss: Boss
+
 @export_group("Components")
 @export var push_comp: PushComponent
 
@@ -75,10 +79,12 @@ func _physics_process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
-			if event.is_pressed() and is_mouse_hovering:
+			if event.is_pressed() and is_mouse_hovering and not parent_boss.controlled_hand:
 				is_mouse_controlled = true
+				controlled_hand.emit(self)
 			else:
 				is_mouse_controlled = false
+				controlled_hand.emit(null)
 		
 		if event.button_index == MOUSE_BUTTON_RIGHT:
 			if event.is_pressed() and is_mouse_controlled:

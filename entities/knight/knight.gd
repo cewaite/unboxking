@@ -21,8 +21,10 @@ func _physics_process(delta: float) -> void:
 ## Give Knight InputComponent access to Boss Parts to track their position,
 ## velocity and know which one is being controller
 func pass_boss_parts(left_hand, right_hand):
-	input_comp.boss_left_hand = left_hand
-	input_comp.boss_right_hand = right_hand
+	if left_hand:
+		input_comp.boss_left_hand = left_hand
+	if right_hand:
+		input_comp.boss_right_hand = right_hand
 
 func invincible_on():
 	if not is_invincible:

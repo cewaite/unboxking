@@ -11,6 +11,7 @@ var knight: Knight
 @export var knight_spawn_time: float = 1.0
 
 func _ready() -> void:
+	assert(boss, "Boss has not been initalized")
 	load_game()
 
 func load_game():
@@ -28,7 +29,4 @@ func spawn_knight():
 	knight = new_knight
 
 func load_ui():
-	pass
-
-func connect_signals():
 	pass

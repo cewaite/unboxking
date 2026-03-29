@@ -3,27 +3,61 @@
 [ext_resource type="Texture2D" uid="uid://fgdpsr1cvnew" path="res://icon.svg" id="1_4kg7w"]
 [ext_resource type="PackedScene" uid="uid://n261q26g0c8c" path="res://entities/hand/hand.tscn" id="1_820jm"]
 [ext_resource type="Script" uid="uid://dyoegjnklkd6" path="res://entities/boss/boss.gd" id="1_c5o42"]
+[ext_resource type="PackedScene" uid="uid://d00bqe0wv1o0l" path="res://prefabs/health_bar/health_bar.tscn" id="4_c5o42"]
 
 [node name="Boss" type="Node2D" unique_id=1601614142 node_paths=PackedStringArray("left_hand", "right_hand")]
 script = ExtResource("1_c5o42")
-left_hand = NodePath("LeftHand/HandCharacterBody2D")
-right_hand = NodePath("RightHand/HandCharacterBody2D")
+left_hand = NodePath("RightHand/HandCharacterBody2D")
+right_hand = NodePath("LeftHand/HandCharacterBody2D")
 
-[node name="LeftHand" parent="." unique_id=559794993 instance=ExtResource("1_820jm")]
+[node name="RightHand" parent="." unique_id=559794993 instance=ExtResource("1_820jm")]
 position = Vector2(400, 0)
 
-[node name="PunchHitbox" parent="LeftHand/HandCharacterBody2D" parent_id_path=PackedInt32Array(559794993, 662445046) index="2" unique_id=862417803]
+[node name="HandCharacterBody2D" parent="RightHand" index="0" unique_id=662445046 node_paths=PackedStringArray("parent_boss")]
+parent_boss = NodePath("../..")
+
+[node name="PunchHitbox" parent="RightHand/HandCharacterBody2D" index="2" unique_id=862417803]
 monitoring = true
 
-[node name="RightHand" parent="." unique_id=362709495 instance=ExtResource("1_820jm")]
+[node name="HealthComponent" parent="RightHand/Components" parent_id_path=PackedInt32Array(559794993, 1379440192) index="1" unique_id=36457291 node_paths=PackedStringArray("health_bar")]
+health_bar = NodePath("../../../RightHandHealthBar")
+
+[node name="LeftHand" parent="." unique_id=362709495 instance=ExtResource("1_820jm")]
 position = Vector2(-400, 0)
 
+[node name="HandCharacterBody2D" parent="LeftHand" index="0" unique_id=662445046 node_paths=PackedStringArray("parent_boss")]
+parent_boss = NodePath("../..")
+
+[node name="HealthComponent" parent="LeftHand/Components" parent_id_path=PackedInt32Array(362709495, 1379440192) index="1" unique_id=36457291 node_paths=PackedStringArray("health_bar")]
+health_bar = NodePath("../../../LeftHandHealthBar")
+
 [node name="Head" type="Node2D" parent="." unique_id=1570804846]
-position = Vector2(0, -300)
+position = Vector2(0, -230)
 scale = Vector2(1.5, 1.5)
 
 [node name="HeadSprite2D" type="Sprite2D" parent="Head" unique_id=830149304]
 texture = ExtResource("1_4kg7w")
 
-[editable path="LeftHand"]
+[node name="HeadHealthBar" parent="." unique_id=761984071 instance=ExtResource("4_c5o42")]
+offset_left = -152.00002
+offset_top = -360.0
+offset_right = -52.000015
+offset_bottom = -354.0
+scale = Vector2(3, 3)
+
+[node name="LeftHandHealthBar" parent="." unique_id=1033526235 instance=ExtResource("4_c5o42")]
+offset_left = -528.0
+offset_top = -360.0
+offset_right = -428.0
+offset_bottom = -354.0
+scale = Vector2(3, 3)
+
+[node name="RightHandHealthBar" parent="." unique_id=2068380435 instance=ExtResource("4_c5o42")]
+offset_left = 223.99998
+offset_top = -360.0
+offset_right = 324.0
+offset_bottom = -354.0
+scale = Vector2(3, 3)
+
 [editable path="RightHand"]
+[editable path="LeftHand"]
