@@ -91,9 +91,11 @@ func _input(event: InputEvent) -> void:
 			if event.is_pressed() and is_mouse_hovering and not parent_boss.controlled_hand:
 				is_mouse_controlled = true
 				controlled_hand.emit(self)
+				z_index = 1
 			else:
 				is_mouse_controlled = false
 				controlled_hand.emit(null)
+				z_index = 0
 		
 		if event.button_index == MOUSE_BUTTON_RIGHT:
 			if event.is_pressed() and is_mouse_controlled:
@@ -116,9 +118,11 @@ func update_sprite(delta):
 	else:
 		if right_hand:
 			print_debug(deg_to_rad(rotation))
-			rotation = move_toward(rotation, deg_to_rad(-179.999), return_rotation_speed * delta)
+			#rotation = move_toward(rotation, deg_to_rad(-179.999), return_rotation_speed * delta)
+			rotation = deg_to_rad(-179.999)
 		else:
-			rotation = move_toward(rotation, 0.0, return_rotation_speed * delta)
+			#rotation = move_toward(rotation, 0.0, return_rotation_speed * delta)
+			rotation = deg_to_rad(0.0)
 		if animation_player.current_animation != "open_hand":
 			animation_player.play("open_hand")
 		

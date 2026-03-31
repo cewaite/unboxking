@@ -7,6 +7,7 @@ class_name AttackComponent extends Component
 ## can later be tied to the animation player.
 @export var attack_hitbox: HitBox
 @export var attack_detector: Area2D
+@export var attack_indicator: ColorRect
 @export var attack_duration: float = 0.1
 @export var attack_cooldown: float = 0.1
 @export var flip_attack: bool = false
@@ -26,8 +27,12 @@ func attack():
 		for attackcomp in other_attack_comps:
 			attackcomp.can_attack = false
 		attack_hitbox.enable_collider()
+		if attack_indicator:
+			attack_indicator.show()
 		await get_tree().create_timer(attack_duration).timeout
 		attack_hitbox.disable_collider()
+		if attack_indicator:
+			attack_indicator.hide()
 		await get_tree().create_timer(attack_cooldown).timeout
 		can_attack = true
 		for attackcomp in other_attack_comps:

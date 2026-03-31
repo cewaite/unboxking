@@ -121,20 +121,24 @@ health_bar = NodePath("../../HealthBar")
 max_health = 5
 metadata/_custom_type_script = "uid://bu1r182oet3bp"
 
-[node name="HorizontalAttackComponent" type="Node" parent="Components" unique_id=1867202821 node_paths=PackedStringArray("other_attack_comps", "attack_hitbox", "attack_detector")]
+[node name="HorizontalAttackComponent" type="Node" parent="Components" unique_id=1867202821 node_paths=PackedStringArray("other_attack_comps", "attack_hitbox", "attack_detector", "attack_indicator")]
 script = ExtResource("12_vcol2")
 other_attack_comps = [NodePath("../VerticalAttackComponent")]
 attack_hitbox = NodePath("../../HorizontalAttackHitbox")
 attack_detector = NodePath("../../HorizontalAttackDetector")
-attack_cooldown = 0.5
+attack_indicator = NodePath("../../HorizontalAttackHitbox/ColorRect")
+attack_duration = 0.2
+attack_cooldown = 1.0
 flip_attack = true
 
-[node name="VerticalAttackComponent" type="Node" parent="Components" unique_id=971317205 node_paths=PackedStringArray("other_attack_comps", "attack_hitbox", "attack_detector")]
+[node name="VerticalAttackComponent" type="Node" parent="Components" unique_id=971317205 node_paths=PackedStringArray("other_attack_comps", "attack_hitbox", "attack_detector", "attack_indicator")]
 script = ExtResource("12_vcol2")
 other_attack_comps = [NodePath("../HorizontalAttackComponent")]
 attack_hitbox = NodePath("../../VerticalAttackHitbox")
 attack_detector = NodePath("../../VerticalAttackDetector")
-attack_cooldown = 0.5
+attack_indicator = NodePath("../../VerticalAttackHitbox/ColorRect")
+attack_duration = 0.2
+attack_cooldown = 1.0
 
 [node name="ImpactFrameComponent" type="Node" parent="Components" unique_id=1135400390]
 script = ExtResource("14_g5pp6")
@@ -179,6 +183,14 @@ rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_wb40x")
 debug_color = Color(0.64989084, 0.29958317, 0.04346002, 0.41960785)
 
+[node name="ColorRect" type="ColorRect" parent="VerticalAttackHitbox" unique_id=1408012924]
+visible = false
+offset_left = -31.0
+offset_top = -85.0
+offset_right = 34.0
+offset_bottom = -63.0
+color = Color(0.7722763, 0, 0.020773713, 1)
+
 [node name="VerticalAttackDetector" type="Area2D" parent="." unique_id=1898221273]
 collision_layer = 4
 collision_mask = 2
@@ -197,6 +209,14 @@ collider = NodePath("CollisionShape2D")
 position = Vector2(50, 0)
 shape = SubResource("CapsuleShape2D_wb40x")
 debug_color = Color(0.7764706, 0, 0.20784314, 0.41960785)
+
+[node name="ColorRect" type="ColorRect" parent="HorizontalAttackHitbox" unique_id=207715816]
+visible = false
+offset_left = 35.0
+offset_top = -30.0
+offset_right = 65.0
+offset_bottom = 30.0
+color = Color(0.7722763, 0, 0.020773713, 1)
 
 [node name="HorizontalAttackDetector" type="Area2D" parent="." unique_id=1720648753]
 collision_layer = 4

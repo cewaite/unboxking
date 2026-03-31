@@ -10,8 +10,10 @@ func _ready():
 
 func _on_area_entered(hitbox: HitBox):
 	if health_comp.has_method("take_damage") and owner != hitbox.owner:
-		print_debug(owner.name + " took " + str(hitbox.damage) + " damage.")
-		health_comp.take_damage(hitbox.damage)
+		# Temp fix to prevent smash wave from dealing damage to boss
+		if not (owner is Hand and hitbox.owner is SmashWave):
+			print_debug(owner.name + " took " + str(hitbox.damage) + " damage.")
+			health_comp.take_damage(hitbox.damage)
 
 func disable_collider():
 	collider_disabled = true

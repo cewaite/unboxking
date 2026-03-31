@@ -14,7 +14,8 @@ bg_color = Color(0.23137255, 0.23137255, 0.23137255, 1)
 bg_color = Color(1, 1, 1, 1)
 
 [node name="HealthBar" type="ProgressBar" unique_id=761984071 node_paths=PackedStringArray("damage_bar")]
-z_index = 1
+z_index = 3
+z_as_relative = false
 offset_right = 100.0
 offset_bottom = 6.0
 theme_override_styles/background = SubResource("StyleBoxEmpty_rcje0")
@@ -25,7 +26,8 @@ script = ExtResource("1_rcje0")
 damage_bar = NodePath("DamageBar")
 
 [node name="DamageBar" type="ProgressBar" parent="." unique_id=1146890280]
-z_index = -1
+z_index = 2
+z_as_relative = false
 layout_mode = 0
 offset_right = 100.0
 offset_bottom = 6.0
