@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bxbtp4fmhvjn3"]
 
-[ext_resource type="Texture2D" uid="uid://fgdpsr1cvnew" path="res://icon.svg" id="1_4kg7w"]
 [ext_resource type="PackedScene" uid="uid://n261q26g0c8c" path="res://entities/hand/hand.tscn" id="1_820jm"]
 [ext_resource type="Script" uid="uid://dyoegjnklkd6" path="res://entities/boss/boss.gd" id="1_c5o42"]
+[ext_resource type="PackedScene" uid="uid://b3k8idv3kqmaq" path="res://entities/head/head.tscn" id="3_c5o42"]
 [ext_resource type="PackedScene" uid="uid://d00bqe0wv1o0l" path="res://prefabs/health_bar/health_bar.tscn" id="4_c5o42"]
 
 [node name="Boss" type="Node2D" unique_id=1601614142 node_paths=PackedStringArray("left_hand", "right_hand")]
@@ -14,6 +14,7 @@ right_hand = NodePath("LeftHand/HandCharacterBody2D")
 position = Vector2(400, 0)
 
 [node name="HandCharacterBody2D" parent="RightHand" index="0" unique_id=662445046 node_paths=PackedStringArray("parent_boss")]
+scale = Vector2(-1, 1)
 parent_boss = NodePath("../..")
 
 [node name="PunchHitbox" parent="RightHand/HandCharacterBody2D" index="2" unique_id=862417803]
@@ -27,16 +28,13 @@ position = Vector2(-400, 0)
 
 [node name="HandCharacterBody2D" parent="LeftHand" index="0" unique_id=662445046 node_paths=PackedStringArray("parent_boss")]
 parent_boss = NodePath("../..")
+right_hand = false
 
 [node name="HealthComponent" parent="LeftHand/Components" parent_id_path=PackedInt32Array(362709495, 1379440192) index="1" unique_id=36457291 node_paths=PackedStringArray("health_bar")]
 health_bar = NodePath("../../../LeftHandHealthBar")
 
-[node name="Head" type="Node2D" parent="." unique_id=1570804846]
-position = Vector2(0, -230)
-scale = Vector2(1.5, 1.5)
-
-[node name="HeadSprite2D" type="Sprite2D" parent="Head" unique_id=830149304]
-texture = ExtResource("1_4kg7w")
+[node name="Head" parent="." unique_id=206899476 instance=ExtResource("3_c5o42")]
+position = Vector2(0, -189)
 
 [node name="HeadHealthBar" parent="." unique_id=761984071 instance=ExtResource("4_c5o42")]
 offset_left = -152.00002

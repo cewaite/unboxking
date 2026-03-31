@@ -1,41 +1,248 @@
 [gd_scene format=3 uid="uid://n261q26g0c8c"]
 
 [ext_resource type="Script" uid="uid://c62k2q6ct48p6" path="res://entities/hand/hand.gd" id="1_hhw0q"]
-[ext_resource type="Texture2D" uid="uid://fgdpsr1cvnew" path="res://icon.svg" id="2_ondc2"]
+[ext_resource type="Texture2D" uid="uid://ofwl135h67dv" path="res://assets/boss/boss_hand/BoxHand.png" id="2_4s0gw"]
 [ext_resource type="PackedScene" uid="uid://bx76hp6pft0pd" path="res://prefabs/hitbox/hitbox.tscn" id="3_ondc2"]
 [ext_resource type="Script" uid="uid://c2xc5w04hlffh" path="res://prefabs/components/push_component.gd" id="4_1ien0"]
 [ext_resource type="Script" uid="uid://bu1r182oet3bp" path="res://prefabs/components/health_component.gd" id="5_vu8gx"]
 [ext_resource type="PackedScene" uid="uid://hj03sgu06i3p" path="res://prefabs/hurtbox/hurtbox.tscn" id="6_pn5vn"]
 [ext_resource type="Script" uid="uid://dhotctfcx1qeq" path="res://prefabs/abilities/hand_abilities/smash_wave/smash_wave_ability.gd" id="7_4s0gw"]
+[ext_resource type="Texture2D" uid="uid://dekover6glij2" path="res://assets/boss/boss_hand/boxFist.png" id="8_eo8p0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wijo7"]
-size = Vector2(128, 128)
+size = Vector2(158, 106)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1ien0"]
 radius = 30.0
 height = 127.99999
 
+[sub_resource type="Animation" id="Animation_4e61m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HandCharacterBody2D/CollisionShape2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(50, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HandCharacterBody2D/Hurtbox/CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(49, -1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HandCharacterBody2D/HandSprite2D:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_4s0gw")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HandCharacterBody2D/CollisionShape2D:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HandCharacterBody2D/Hurtbox/CollisionShape2D:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ra17o"]
+resource_name = "fist_hand"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HandCharacterBody2D/Hurtbox/CollisionShape2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(20, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HandCharacterBody2D/HandSprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("8_eo8p0")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HandCharacterBody2D/CollisionShape2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(20, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HandCharacterBody2D/CollisionShape2D:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HandCharacterBody2D/Hurtbox/CollisionShape2D:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_edxwq"]
+resource_name = "open_hand"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HandCharacterBody2D/CollisionShape2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(50, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HandCharacterBody2D/Hurtbox/CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(50, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HandCharacterBody2D/HandSprite2D:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_4s0gw")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HandCharacterBody2D/CollisionShape2D:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.35, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HandCharacterBody2D/Hurtbox/CollisionShape2D:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.35, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3jtkg"]
+_data = {
+&"RESET": SubResource("Animation_4e61m"),
+&"fist_hand": SubResource("Animation_ra17o"),
+&"open_hand": SubResource("Animation_edxwq")
+}
+
 [node name="Hand" type="Node2D" unique_id=362709495]
 
-[node name="HandCharacterBody2D" type="CharacterBody2D" parent="." unique_id=662445046 node_paths=PackedStringArray("push_comp", "punch_hitbox")]
+[node name="HandCharacterBody2D" type="CharacterBody2D" parent="." unique_id=662445046 node_paths=PackedStringArray("push_comp", "punch_hitbox", "hand_sprite", "animation_player")]
 collision_layer = 2
 collision_mask = 100
 input_pickable = true
 script = ExtResource("1_hhw0q")
 push_comp = NodePath("../Components/PushComponent")
 punch_hitbox = NodePath("PunchHitbox")
+hand_sprite = NodePath("HandSprite2D")
+animation_player = NodePath("../AnimationPlayer")
+right_hand = true
 
 [node name="HandSprite2D" type="Sprite2D" parent="HandCharacterBody2D" unique_id=1932599022]
-texture = ExtResource("2_ondc2")
+scale = Vector2(0.19313335, 0.19313335)
+texture = ExtResource("2_4s0gw")
+offset = Vector2(249.955, 51.87)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HandCharacterBody2D" unique_id=498075268]
+position = Vector2(50, 0)
 shape = SubResource("RectangleShape2D_wijo7")
 
 [node name="PunchHitbox" parent="HandCharacterBody2D" unique_id=862417803 node_paths=PackedStringArray("collider") instance=ExtResource("3_ondc2")]
+position = Vector2(1, 0)
+rotation = 1.5707964
 collider = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HandCharacterBody2D/PunchHitbox" unique_id=562466585]
-position = Vector2(0, -65)
+position = Vector2(-4.152582e-06, -95)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_1ien0")
 debug_color = Color(0.77490634, 0, 0.20784777, 0.41960785)
@@ -45,6 +252,7 @@ collider = NodePath("CollisionShape2D")
 health_comp = NodePath("../../Components/HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HandCharacterBody2D/Hurtbox" unique_id=225421620]
+position = Vector2(49, -1)
 shape = SubResource("RectangleShape2D_wijo7")
 debug_color = Color(0.85907805, 0.16858426, 0.78760904, 0.41960785)
 
@@ -67,6 +275,10 @@ metadata/_custom_type_script = "uid://bu1r182oet3bp"
 [node name="SmashWaveAbility" type="Node" parent="Abilities" unique_id=729934238 node_paths=PackedStringArray("parent")]
 script = ExtResource("7_4s0gw")
 parent = NodePath("../../HandCharacterBody2D")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1296746910]
+libraries/ = SubResource("AnimationLibrary_3jtkg")
+autoplay = &"open_hand"
 
 [connection signal="mouse_entered" from="HandCharacterBody2D" to="HandCharacterBody2D" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="HandCharacterBody2D" to="HandCharacterBody2D" method="_on_mouse_exited"]

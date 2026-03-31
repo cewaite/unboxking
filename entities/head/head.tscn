@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://b3k8idv3kqmaq"]
+
+[ext_resource type="Texture2D" uid="uid://cqm7kno2yilfp" path="res://assets/boss/boss_head/SkeletonHead.png" id="1_ca4ou"]
+[ext_resource type="Texture2D" uid="uid://bwn4wj58dg6n4" path="res://assets/boss/boss_head/PupilLeft.png" id="2_vsksn"]
+[ext_resource type="Texture2D" uid="uid://b8kybprukev7y" path="res://assets/boss/boss_head/PupilRight.png" id="3_xvy01"]
+[ext_resource type="Texture2D" uid="uid://bx1dg18jwx4sd" path="res://assets/boss/boss_head/EyeShadow.png" id="4_263f1"]
+[ext_resource type="Texture2D" uid="uid://bmaluyk22a4ei" path="res://assets/boss/boss_head/BoxHead.png" id="5_wqlox"]
+[ext_resource type="Texture2D" uid="uid://dqppadoa31r7j" path="res://assets/boss/boss_head/BoxJaw.png" id="6_ejenp"]
+
+[node name="Head" type="Node2D" unique_id=206899476]
+
+[node name="HeadSprites" type="Node2D" parent="." unique_id=370363964]
+
+[node name="SkullSprite2D" type="Sprite2D" parent="HeadSprites" unique_id=68303426]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_ca4ou")
+offset = Vector2(86.235, 72.795)
+
+[node name="LeftPupilSprite2D" type="Sprite2D" parent="HeadSprites" unique_id=1261265273]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_vsksn")
+offset = Vector2(86.235, 72.795)
+
+[node name="RightPupilSprite2D" type="Sprite2D" parent="HeadSprites" unique_id=1073787459]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_xvy01")
+offset = Vector2(86.235, 72.795)
+
+[node name="EyeShadowSprite2D" type="Sprite2D" parent="HeadSprites" unique_id=293330234]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_263f1")
+offset = Vector2(86.235, 72.795)
+
+[node name="HeadSprite2D" type="Sprite2D" parent="HeadSprites" unique_id=788915371]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("5_wqlox")
+offset = Vector2(86.235, 72.795)
+
+[node name="JawSprites" type="Node2D" parent="." unique_id=720801761]
+
+[node name="BoxJawSprite2D" type="Sprite2D" parent="JawSprites" unique_id=1139667971]
+position = Vector2(-12, 0)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("6_ejenp")
+offset = Vector2(86.235, 72.795)

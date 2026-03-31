@@ -20,6 +20,7 @@ func load_game():
 	#await ui_manager.fade_in()
 
 func spawn_knight():
+	Engine.time_scale = 1.0
 	await get_tree().create_timer(knight_spawn_time).timeout
 	var new_knight = KNIGHT_SCENE.instantiate() as Knight
 	new_knight.global_position = knight_spawn.global_position

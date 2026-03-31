@@ -18,7 +18,7 @@ signal controlled_hand(hand)
 @export var max_normal_speed: float = 800.0
 
 @export_subgroup("Fist Speeds")
-@export var fist_speed: float = 2000.0
+@export var fist_speed: float = 1200.0
 @export var fist_accel: float = 4000.0
 @export var max_fist_speed: float = 1000.0
 
@@ -26,8 +26,14 @@ signal controlled_hand(hand)
 @export var return_speed: float = 500.0
 @export var return_accel: float = 6000.0
 
+@export_group("Animation")
+@export var hand_sprite: Sprite2D
+@export var animation_player: AnimationPlayer
+
 @export_group("Misc")
 @export var approx_distance_range: float = 5.0
+@export var right_hand: bool = false
+@export var return_rotation_speed: float = 5.0
 
 var hand_return_pos: Vector2
 var is_mouse_hovering: bool = false
@@ -68,6 +74,9 @@ func _physics_process(delta: float) -> void:
 	# Handle Hitbox rotation and enable if fast enough
 	update_hitbox()
 	
+	# Handlehand rotation and update sprites
+	update_sprite(delta)
+	
 	# Resolve collisions with players
 	push_comp.apply_push()
 	
@@ -93,11 +102,26 @@ func _input(event: InputEvent) -> void:
 				is_fist = false
 
 func update_hitbox():
-	punch_hitbox.rotation = velocity.angle() + deg_to_rad(90.0)
+	#punch_hitbox.rotation = velocity.angle() + deg_to_rad(90.0)
 	if punch_hitbox.collider_disabled and velocity.length() >= punch_hitbox_velocity:
 		punch_hitbox.enable_collider()
 	elif not punch_hitbox.collider_disabled and velocity.length() <= punch_hitbox_velocity:
 		punch_hitbox.disable_collider()
+
+func update_sprite(delta):
+	if is_fist:
+		rotation = velocity.angle() #+ deg_to_rad(180.0)
+		if animation_player.current_animation != "fist_hand":
+			animation_player.play("fist_hand")
+	else:
+		if right_hand:
+			print_debug(deg_to_rad(rotation))
+			rotation = move_toward(rotation, deg_to_rad(-179.999), return_rotation_speed * delta)
+		else:
+			rotation = move_toward(rotation, 0.0, return_rotation_speed * delta)
+		if animation_player.current_animation != "open_hand":
+			animation_player.play("open_hand")
+		
 
 #--- SIGNALS --#
 func _on_mouse_entered() -> void:
