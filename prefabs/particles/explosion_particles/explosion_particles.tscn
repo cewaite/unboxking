@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://cjvwy24na88is"]
+
+[ext_resource type="Script" uid="uid://bobisq5c4tyu4" path="res://prefabs/particles/explosion_particles/explosion_particles.gd" id="1_fx2rr"]
+
+[sub_resource type="Curve" id="Curve_groiy"]
+_data = [Vector2(0.9425676, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.2090218), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_mynbf"]
+curve = SubResource("Curve_groiy")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_g8wo1"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(20, 50, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+spread = 180.0
+initial_velocity_min = 100.0
+initial_velocity_max = 300.0
+gravity = Vector3(0, 900, 0)
+scale_min = 5.0
+scale_max = 5.0
+scale_curve = SubResource("CurveTexture_mynbf")
+collision_mode = 1
+collision_friction = 1.0
+collision_bounce = 0.0
+
+[node name="ExplosionParticles" type="GPUParticles2D" unique_id=62575559]
+amount = 200
+lifetime = 5.0
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_g8wo1")
+script = ExtResource("1_fx2rr")

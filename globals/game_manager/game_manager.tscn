@@ -4,6 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://bkdvn16v0n73l" path="res://scenes/boss_demo/boss_demo.tscn" id="2_ctu20"]
 [ext_resource type="AudioStream" uid="uid://wrjpmxuip5a" path="res://assets/music/Doom.mp3" id="3_q5eha"]
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_qfmkk"]
+polygon = PackedVector2Array(-640, -22, -640, 20, 642, 21, 640, -22)
+
 [node name="GameManager" type="Node" unique_id=1768220721 node_paths=PackedStringArray("level", "boss", "knight_spawn")]
 script = ExtResource("1_e8pdb")
 level = NodePath("BossDemo")
@@ -12,9 +15,11 @@ knight_spawn = NodePath("BossDemo/KnightSpawnMarker2D")
 
 [node name="BossDemo" parent="." unique_id=830802321 instance=ExtResource("2_ctu20")]
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="BossDemo/FloorStaticBody2D" parent_id_path=PackedInt32Array(830802321, 647414925) index="2" unique_id=1429205538]
+occluder = SubResource("OccluderPolygon2D_qfmkk")
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=721600527]
 stream = ExtResource("3_q5eha")
 volume_db = -10.0
-autoplay = true
 
 [editable path="BossDemo"]

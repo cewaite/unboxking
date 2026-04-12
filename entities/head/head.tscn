@@ -1,13 +1,30 @@
 [gd_scene format=3 uid="uid://b3k8idv3kqmaq"]
 
 [ext_resource type="Texture2D" uid="uid://cqm7kno2yilfp" path="res://assets/boss/boss_head/SkeletonHead.png" id="1_ca4ou"]
+[ext_resource type="Script" uid="uid://d4c67f6kaw7c2" path="res://entities/head/head.gd" id="1_vsksn"]
 [ext_resource type="Texture2D" uid="uid://bwn4wj58dg6n4" path="res://assets/boss/boss_head/PupilLeft.png" id="2_vsksn"]
 [ext_resource type="Texture2D" uid="uid://b8kybprukev7y" path="res://assets/boss/boss_head/PupilRight.png" id="3_xvy01"]
 [ext_resource type="Texture2D" uid="uid://bx1dg18jwx4sd" path="res://assets/boss/boss_head/EyeShadow.png" id="4_263f1"]
 [ext_resource type="Texture2D" uid="uid://bmaluyk22a4ei" path="res://assets/boss/boss_head/BoxHead.png" id="5_wqlox"]
 [ext_resource type="Texture2D" uid="uid://dqppadoa31r7j" path="res://assets/boss/boss_head/BoxJaw.png" id="6_ejenp"]
+[ext_resource type="PackedScene" uid="uid://hj03sgu06i3p" path="res://prefabs/hurtbox/hurtbox.tscn" id="8_xvy01"]
+[ext_resource type="Script" uid="uid://bu1r182oet3bp" path="res://prefabs/components/health_component.gd" id="9_263f1"]
 
-[node name="Head" type="Node2D" unique_id=206899476]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_263f1"]
+size = Vector2(246, 222)
+
+[node name="Head" type="CharacterBody2D" unique_id=1623430290 node_paths=PackedStringArray("left_eye_sprite", "right_eye_sprite")]
+script = ExtResource("1_vsksn")
+left_eye_sprite = NodePath("HeadSprites/LeftPupilSprite2D")
+right_eye_sprite = NodePath("HeadSprites/RightPupilSprite2D")
+
+[node name="Components" type="Node" parent="." unique_id=2009905443]
+
+[node name="HealthComponent" type="Node" parent="Components" unique_id=359808141 node_paths=PackedStringArray("parent")]
+script = ExtResource("9_263f1")
+parent = NodePath("")
+max_health = 30
+metadata/_custom_type_script = "uid://bu1r182oet3bp"
 
 [node name="HeadSprites" type="Node2D" parent="." unique_id=370363964]
 
@@ -16,19 +33,21 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_ca4ou")
 offset = Vector2(86.235, 72.795)
 
+[node name="EyeShadowSprite2D" type="Sprite2D" parent="HeadSprites" unique_id=293330234]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_263f1")
+offset = Vector2(86.235, 72.795)
+
 [node name="LeftPupilSprite2D" type="Sprite2D" parent="HeadSprites" unique_id=1261265273]
+position = Vector2(0, 20)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_vsksn")
 offset = Vector2(86.235, 72.795)
 
 [node name="RightPupilSprite2D" type="Sprite2D" parent="HeadSprites" unique_id=1073787459]
+position = Vector2(0, 19.999998)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("3_xvy01")
-offset = Vector2(86.235, 72.795)
-
-[node name="EyeShadowSprite2D" type="Sprite2D" parent="HeadSprites" unique_id=293330234]
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("4_263f1")
 offset = Vector2(86.235, 72.795)
 
 [node name="HeadSprite2D" type="Sprite2D" parent="HeadSprites" unique_id=788915371]
@@ -43,3 +62,16 @@ position = Vector2(-12, 0)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("6_ejenp")
 offset = Vector2(86.235, 72.795)
+
+[node name="HeadCollisionShape" type="CollisionShape2D" parent="." unique_id=310631765]
+position = Vector2(3, 11)
+shape = SubResource("RectangleShape2D_263f1")
+
+[node name="Hurtbox" parent="." unique_id=1132817771 node_paths=PackedStringArray("collider", "health_comp") instance=ExtResource("8_xvy01")]
+collider = NodePath("HurtboxCollisionShape")
+health_comp = NodePath("../Components/HealthComponent")
+
+[node name="HurtboxCollisionShape" type="CollisionShape2D" parent="Hurtbox" unique_id=1712366965]
+position = Vector2(3, 11)
+shape = SubResource("RectangleShape2D_263f1")
+debug_color = Color(0.7858658, 0.09773206, 0.13523173, 0.41960785)

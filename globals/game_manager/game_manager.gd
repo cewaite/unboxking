@@ -26,6 +26,7 @@ func spawn_knight():
 	new_knight.global_position = knight_spawn.global_position
 	new_knight.pass_boss_parts(boss.left_hand, boss.right_hand)
 	new_knight.died.connect(spawn_knight)
+	boss.head.knight = new_knight
 	level.add_child(new_knight)
 	knight = new_knight
 

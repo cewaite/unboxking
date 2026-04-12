@@ -2,6 +2,8 @@ class_name Knight extends CharacterBody2D
 
 signal died()
 
+const EXPLOSION_PARTICLES = preload("res://prefabs/particles/explosion_particles/explosion_particles.tscn")
+
 @onready var vector_ray_cast: VectorRayCast = $VectorRayCast
 @onready var target_ray_cast: VectorRayCast = $TargetRayCast
 
@@ -47,5 +49,9 @@ func invincible_off():
 		is_invincible = false
 
 func die():
+	var packing_explosion = EXPLOSION_PARTICLES.instantiate() as ExplosionParticles
+	packing_explosion.global_position = self.global_position
+	var parent = self.get_parent()
+	parent.add_child(packing_explosion)
 	died.emit()
 	self.call_deferred("queue_free")

@@ -2,7 +2,7 @@ class_name Boss extends Node2D
 
 @export var left_hand: Hand
 @export var right_hand: Hand
-#@export var head: Head
+@export var head: Head
 
 # Should only be of type Hand or null 
 var controlled_hand
