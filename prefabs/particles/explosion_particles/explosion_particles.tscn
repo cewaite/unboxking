@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cjvwy24na88is"]
 
 [ext_resource type="Script" uid="uid://bobisq5c4tyu4" path="res://prefabs/particles/explosion_particles/explosion_particles.gd" id="1_fx2rr"]
+[ext_resource type="Texture2D" uid="uid://bfd8d0f3m5m8g" path="res://assets/Packing_Peanut.png" id="1_m5qdk"]
 
 [sub_resource type="Curve" id="Curve_groiy"]
 _data = [Vector2(0.9425676, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.2090218), 0.0, 0.0, 0, 0]
@@ -18,15 +19,17 @@ spread = 180.0
 initial_velocity_min = 100.0
 initial_velocity_max = 300.0
 gravity = Vector3(0, 900, 0)
-scale_min = 5.0
-scale_max = 5.0
+scale_min = 0.099999994
+scale_max = 0.099999994
 scale_curve = SubResource("CurveTexture_mynbf")
 collision_mode = 1
 collision_friction = 1.0
 collision_bounce = 0.0
+collision_use_scale = true
 
 [node name="ExplosionParticles" type="GPUParticles2D" unique_id=62575559]
 amount = 200
+texture = ExtResource("1_m5qdk")
 lifetime = 5.0
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_g8wo1")

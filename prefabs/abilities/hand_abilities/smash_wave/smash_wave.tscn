@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bx76hp6pft0pd" path="res://prefabs/hitbox/hitbox.tscn" id="1_stg5f"]
 [ext_resource type="Script" uid="uid://cdx50buyrhffk" path="res://prefabs/abilities/hand_abilities/smash_wave/smash_wave.gd" id="1_vomrh"]
+[ext_resource type="PackedScene" uid="uid://cjvwy24na88is" path="res://prefabs/particles/explosion_particles/explosion_particles.tscn" id="3_ad6jh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ad6jh"]
 size = Vector2(51, 166)
@@ -38,6 +39,11 @@ offset_right = 5.0
 offset_bottom = -26.0
 scale = Vector2(1.2677575, 4.151664)
 
+[node name="ExplosionParticles" parent="LeftWave" unique_id=62575559 instance=ExtResource("3_ad6jh")]
+amount = 500
+lifetime = 10.0
+explosiveness = 0.0
+
 [node name="RightWave" type="CharacterBody2D" parent="." unique_id=1734934603]
 position = Vector2(70, -100)
 collision_layer = 8
@@ -63,6 +69,11 @@ offset_top = -68.0
 offset_right = 24.0
 offset_bottom = -28.0
 scale = Vector2(1.2758547, 4.198588)
+
+[node name="ExplosionParticles" parent="RightWave" unique_id=269756464 instance=ExtResource("3_ad6jh")]
+amount = 500
+lifetime = 10.0
+explosiveness = 0.0
 
 [connection signal="area_entered" from="LeftWave/LeftHitbox" to="." method="_on_left_hitbox_area_entered"]
 [connection signal="area_entered" from="RightWave/RightHitbox" to="." method="_on_right_hitbox_area_entered"]

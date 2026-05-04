@@ -11,12 +11,15 @@ const EXPLOSION_PARTICLES = preload("res://prefabs/particles/explosion_particles
 @export var grav_comp: GravityComponent
 @export var push_comp: PushComponent
 
+@export var sprites: Array[Sprite2D]
+
 @export var hurtbox: HurtBox
 var is_invincible: bool = false
 
 func _physics_process(delta: float) -> void:
 	grav_comp.apply_gravity(delta)
 	push_comp.apply_push()
+	flip_sprites()
 	move_and_slide()
 	vector_ray_cast.show_vector_as_ray(velocity)
 
@@ -55,3 +58,13 @@ func die():
 	parent.add_child(packing_explosion)
 	died.emit()
 	self.call_deferred("queue_free")
+
+func flip_sprites():
+	if sign(velocity.x) > 0:
+		for sprite in sprites:
+			if not sprite.flip_h:
+				sprite.flip_h = true
+	else:
+		for sprite in sprites:
+			if sprite.flip_h:
+				sprite.flip_h = false

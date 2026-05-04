@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://bkdvn16v0n73l"]
 
+[ext_resource type="Texture2D" uid="uid://dy38k1lhabfrh" path="res://assets/levels/Box_Arena.png" id="1_7vhjq"]
 [ext_resource type="PackedScene" uid="uid://bxbtp4fmhvjn3" path="res://entities/boss/boss.tscn" id="1_x5frj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x5frj"]
@@ -9,6 +10,11 @@ size = Vector2(1280, 40)
 size = Vector2(20, 720)
 
 [node name="BossDemo" type="Node2D" unique_id=830802321]
+
+[node name="BoxArena" type="Sprite2D" parent="." unique_id=1903770307]
+position = Vector2(633, 353.5)
+scale = Vector2(0.6611111, 0.47716054)
+texture = ExtResource("1_7vhjq")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1268809428]
 position = Vector2(640, 360)
@@ -22,6 +28,7 @@ collision_mask = 127
 shape = SubResource("RectangleShape2D_x5frj")
 
 [node name="ColorRect" type="ColorRect" parent="FloorStaticBody2D" unique_id=1374575392]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
