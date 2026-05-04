@@ -12,6 +12,8 @@ const EXPLOSION_PARTICLES = preload("res://prefabs/particles/explosion_particles
 @export var push_comp: PushComponent
 
 @export var sprites: Array[Sprite2D]
+@export var leg_sprites_parent: Node2D
+@export var body_sprites_parent: Node2D
 
 @export var hurtbox: HurtBox
 var is_invincible: bool = false
@@ -61,10 +63,14 @@ func die():
 
 func flip_sprites():
 	if sign(velocity.x) > 0:
-		for sprite in sprites:
-			if not sprite.flip_h:
-				sprite.flip_h = true
+		#for sprite in sprites:
+			#if not sprite.flip_h:
+				#sprite.flip_h = true
+		leg_sprites_parent.scale.x = -1
+		body_sprites_parent.scale.x = -1
 	else:
-		for sprite in sprites:
-			if sprite.flip_h:
-				sprite.flip_h = false
+		#for sprite in sprites:
+			#if sprite.flip_h:
+				#sprite.flip_h = false
+		leg_sprites_parent.scale.x = 1
+		body_sprites_parent.scale.x = 1

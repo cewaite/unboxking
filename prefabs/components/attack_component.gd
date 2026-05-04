@@ -1,5 +1,7 @@
 class_name AttackComponent extends Component
 
+@export var parent: CharacterBody2D
+
 ## Used for syncing attack cooldown
 @export var other_attack_comps: Array[AttackComponent]
 
@@ -18,19 +20,19 @@ func get_component_name() -> StringName:
 
 func _physics_process(delta: float) -> void:
 	if flip_attack:
-		attack_hitbox.scale.x = 1 if owner.velocity.x >= 0 else -1
-		attack_detector.scale.x = 1 if owner.velocity.x >= 0 else -1
+		attack_hitbox.scale.x = 1 if parent.velocity.x >= 0 else -1
+		attack_detector.scale.x = 1 if parent.velocity.x >= 0 else -1
 
 func attack():
 	if can_attack:
 		can_attack = false
 		for attackcomp in other_attack_comps:
 			attackcomp.can_attack = false
-		attack_hitbox.enable_collider()
+		#attack_hitbox.enable_collider()
 		if attack_indicator:
 			attack_indicator.show()
 		await get_tree().create_timer(attack_duration).timeout
-		attack_hitbox.disable_collider()
+		#attack_hitbox.disable_collider()
 		if attack_indicator:
 			attack_indicator.hide()
 		await get_tree().create_timer(attack_cooldown).timeout

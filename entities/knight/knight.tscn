@@ -442,26 +442,26 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("BodySprites/ShoulderSprite2D:position")
+tracks/4/path = NodePath("BodySprites/ShoulderSprite2D:rotation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [0.0]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("BodySprites/ShoulderSprite2D:rotation")
+tracks/5/path = NodePath("BodySprites/ShoulderSprite2D:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [Vector2(0, 0)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -474,6 +474,82 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../HorizontalAttackHitbox/CollisionShape2D:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_g5r5j"]
+resource_name = "horizontal_attack"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodySprites/ShoulderSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5107931, 1.0029634, 1.2, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-20.000004, -15.000002), Vector2(-19.000002, -35.000008), Vector2(-13.000002, -2), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BodySprites/ShoulderSprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5107931, 1.0029634, 1.2, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.2740904, 2.3021898, 0.6413125, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BodySprites/SwordSprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5107931, 1.0029634, 1.2, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-14.000002, -15.000002), Vector2(-16.000002, -29.000004), Vector2(-12.000002, 5), Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BodySprites/SwordSprite2D:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5107931, 1.0029634, 1.2, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 2.2863812, 2.8858426, -0.2510481, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../HorizontalAttackHitbox/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
 }
 
 [sub_resource type="Animation" id="Animation_klefb"]
@@ -560,26 +636,26 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("BodySprites/SwordSprite2D:position")
+tracks/1/path = NodePath("BodySprites/ShoulderSprite2D:rotation")
 tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(19.000002, -3.9999998), Vector2(0, 0), Vector2(-21, -19.000002), Vector2(0, 0)]
+"values": [0.0, -0.79333353, 0.0, 1.2231767, 0.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("BodySprites/ShoulderSprite2D:rotation")
+tracks/2/path = NodePath("BodySprites/SwordSprite2D:position")
 tracks/2/interp = 0
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [0.0, -0.79333353, 0.0, 1.2231767, 0.0]
+"values": [Vector2(0, 0), Vector2(19.000002, -3.9999998), Vector2(0, 0), Vector2(-21, -19.000002), Vector2(0, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -597,6 +673,7 @@ tracks/3/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_evwfg"]
 _data = {
 &"RESET": SubResource("Animation_g6wjf"),
+&"horizontal_attack": SubResource("Animation_g5r5j"),
 &"idle": SubResource("Animation_klefb"),
 &"running": SubResource("Animation_evwfg")
 }
@@ -612,40 +689,48 @@ height = 90.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_bakul"]
 radius = 200.0
 
-[node name="Knight" type="CharacterBody2D" unique_id=315108858 node_paths=PackedStringArray("input_comp", "grav_comp", "push_comp", "sprites", "hurtbox")]
+[node name="Knight" type="CharacterBody2D" unique_id=315108858 node_paths=PackedStringArray("input_comp", "grav_comp", "push_comp", "leg_sprites_parent", "body_sprites_parent", "hurtbox")]
 collision_layer = 5
 collision_mask = 126
 script = ExtResource("1_ojclw")
 input_comp = NodePath("Components/SmartInputComponent")
 grav_comp = NodePath("Components/GravityComponent")
 push_comp = NodePath("Components/PushComponent")
-sprites = [NodePath("Animations/LegSprites/LeftFootSprite2D"), NodePath("Animations/LegSprites/RightFootSprite2D"), NodePath("Animations/LegSprites/LeftCalfSprite2D"), NodePath("Animations/LegSprites/RightCalfSprite2D"), NodePath("Animations/LegSprites/LeftThighSprite2D"), NodePath("Animations/LegSprites/RightThighSprite2D"), NodePath("Animations/BodySprites/ShieldSprite2D"), NodePath("Animations/BodySprites/HelmetSprite2D"), NodePath("Animations/BodySprites/TorsoSprite2D"), NodePath("Animations/BodySprites/SwordSprite2D"), NodePath("Animations/BodySprites/ShoulderSprite2D")]
+leg_sprites_parent = NodePath("Animations/LegSprites")
+body_sprites_parent = NodePath("Animations/BodySprites")
 hurtbox = NodePath("Hurtbox")
 
 [node name="StateMachine" type="Node" parent="." unique_id=516543897 node_paths=PackedStringArray("init_state")]
 script = ExtResource("8_2a4lh")
 init_state = NodePath("Move")
 
-[node name="Move" type="Node" parent="StateMachine" unique_id=1900408241 node_paths=PackedStringArray("input_comp", "move_comp")]
+[node name="Move" type="Node" parent="StateMachine" unique_id=1900408241 node_paths=PackedStringArray("input_comp", "move_comp", "legs_anim_player", "body_anim_player")]
 script = ExtResource("9_swig6")
 input_comp = NodePath("../../Components/SmartInputComponent")
 move_comp = NodePath("../../Components/MovementComponent")
+legs_anim_player = NodePath("../../Animations/LegsAnimationPlayer")
+body_anim_player = NodePath("../../Animations/BodyAnimationPlayer")
 
 [node name="Jump" type="Node" parent="StateMachine" unique_id=1659904974 node_paths=PackedStringArray("jump_comp")]
 script = ExtResource("11_388i6")
 jump_comp = NodePath("../../Components/JumpComponent")
 
-[node name="Stun" type="Node" parent="StateMachine" unique_id=1795118223]
+[node name="Stun" type="Node" parent="StateMachine" unique_id=1795118223 node_paths=PackedStringArray("legs_anim_player", "body_anim_player", "leg_sprites_parent", "body_sprites_parent")]
 script = ExtResource("5_vcol2")
+legs_anim_player = NodePath("../../Animations/LegsAnimationPlayer")
+body_anim_player = NodePath("../../Animations/BodyAnimationPlayer")
+leg_sprites_parent = NodePath("../../Animations/LegSprites")
+body_sprites_parent = NodePath("../../Animations/BodySprites")
 
 [node name="Dodge" type="Node" parent="StateMachine" unique_id=1097626089 node_paths=PackedStringArray("input_comp", "dodge_comp")]
 script = ExtResource("7_jtaml")
 input_comp = NodePath("../../Components/SmartInputComponent")
 dodge_comp = NodePath("../../Components/DodgeComponent")
 
-[node name="HorizontalAttack" type="Node" parent="StateMachine" unique_id=194051138 node_paths=PackedStringArray("attack_comp")]
+[node name="HorizontalAttack" type="Node" parent="StateMachine" unique_id=194051138 node_paths=PackedStringArray("attack_comp", "body_anim_player")]
 script = ExtResource("6_wb40x")
 attack_comp = NodePath("../../Components/HorizontalAttackComponent")
+body_anim_player = NodePath("../../Animations/BodyAnimationPlayer")
 
 [node name="VerticalAttack" type="Node" parent="StateMachine" unique_id=1182101785 node_paths=PackedStringArray("attack_comp")]
 script = ExtResource("6_wb40x")
@@ -701,18 +786,20 @@ health_bar = NodePath("../../HealthBar")
 max_health = 5
 metadata/_custom_type_script = "uid://bu1r182oet3bp"
 
-[node name="HorizontalAttackComponent" type="Node" parent="Components" unique_id=1867202821 node_paths=PackedStringArray("other_attack_comps", "attack_hitbox", "attack_detector", "attack_indicator")]
+[node name="HorizontalAttackComponent" type="Node" parent="Components" unique_id=1867202821 node_paths=PackedStringArray("parent", "other_attack_comps", "attack_hitbox", "attack_detector", "attack_indicator")]
 script = ExtResource("12_vcol2")
+parent = NodePath("../..")
 other_attack_comps = [NodePath("../VerticalAttackComponent")]
 attack_hitbox = NodePath("../../HorizontalAttackHitbox")
 attack_detector = NodePath("../../HorizontalAttackDetector")
 attack_indicator = NodePath("../../HorizontalAttackHitbox/ColorRect")
-attack_duration = 0.2
+attack_duration = 2.0
 attack_cooldown = 1.0
 flip_attack = true
 
-[node name="VerticalAttackComponent" type="Node" parent="Components" unique_id=971317205 node_paths=PackedStringArray("other_attack_comps", "attack_hitbox", "attack_detector", "attack_indicator")]
+[node name="VerticalAttackComponent" type="Node" parent="Components" unique_id=971317205 node_paths=PackedStringArray("parent", "other_attack_comps", "attack_hitbox", "attack_detector", "attack_indicator")]
 script = ExtResource("12_vcol2")
+parent = NodePath("../..")
 other_attack_comps = [NodePath("../HorizontalAttackComponent")]
 attack_hitbox = NodePath("../../VerticalAttackHitbox")
 attack_detector = NodePath("../../VerticalAttackDetector")

@@ -3,9 +3,13 @@ class_name Move extends State
 @export var input_comp: InputComponent
 @export var move_comp: MovementComponent
 
+@export var legs_anim_player: AnimationPlayer
+@export var body_anim_player: AnimationPlayer
+
 func enter():
 	super()
-	pass
+	legs_anim_player.play("running")
+	body_anim_player.play("running")
 
 func exit():
 	super()
