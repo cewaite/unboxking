@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://dlpib2lvyq6xr"]
+
+[ext_resource type="Script" uid="uid://bnmqwsnout2k7" path="res://scenes/ui/pause_menu/pause_menu.gd" id="1_2mh1u"]
+[ext_resource type="StyleBox" uid="uid://dooxhnwt4o6xq" path="res://scenes/ui/main_menu/button_styles/button_style.tres" id="1_xgg5q"]
+[ext_resource type="StyleBox" uid="uid://bfdj2gg4p1dok" path="res://scenes/ui/main_menu/button_styles/button_press_style.tres" id="2_rv5mv"]
+[ext_resource type="StyleBox" uid="uid://gcnpkpyaro62" path="res://scenes/ui/main_menu/button_styles/button_hover_style.tres" id="3_2mh1u"]
+[ext_resource type="FontFile" uid="uid://by34nu83x6vs1" path="res://assets/fonts/Robot Crush.otf" id="4_rv5mv"]
+
+[node name="PauseMenu" type="Control" unique_id=646636779]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2mh1u")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1580870409]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.3882353)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1897609421]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -171.5
+offset_top = -155.5
+offset_right = 171.5
+offset_bottom = 155.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+
+[node name="ResumeButton" type="Button" parent="VBoxContainer" unique_id=1009387729]
+layout_mode = 2
+theme_override_font_sizes/font_size = 56
+theme_override_styles/normal = ExtResource("1_xgg5q")
+theme_override_styles/pressed = ExtResource("2_rv5mv")
+theme_override_styles/hover = ExtResource("3_2mh1u")
+text = "RESUME"
+
+[node name="OptionsButton" type="Button" parent="VBoxContainer" unique_id=139676885]
+layout_mode = 2
+theme_override_font_sizes/font_size = 56
+theme_override_styles/normal = ExtResource("1_xgg5q")
+theme_override_styles/pressed = ExtResource("2_rv5mv")
+theme_override_styles/hover = ExtResource("3_2mh1u")
+text = "OPTIONS"
+
+[node name="ExitButton" type="Button" parent="VBoxContainer" unique_id=1545445363]
+layout_mode = 2
+theme_override_font_sizes/font_size = 56
+theme_override_styles/normal = ExtResource("1_xgg5q")
+theme_override_styles/pressed = ExtResource("2_rv5mv")
+theme_override_styles/hover = ExtResource("3_2mh1u")
+text = "EXIT"
+
+[node name="PausedLabel" type="Label" parent="." unique_id=714410240]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -48.5
+offset_right = 48.5
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.6627451, 0.47058824, 0.20784314, 1)
+theme_override_constants/outline_size = 26
+theme_override_fonts/font = ExtResource("4_rv5mv")
+theme_override_font_sizes/font_size = 150
+text = "Paused"
+
+[connection signal="pressed" from="VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]

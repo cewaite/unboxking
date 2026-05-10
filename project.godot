@@ -13,6 +13,7 @@ config_version=5
 config/name="Unboxking"
 run/main_scene="uid://covqq7wokqniy"
 config/features=PackedStringArray("4.6", "Forward Plus")
+run/max_fps=240
 config/icon="res://icon.svg"
 
 [display]
@@ -25,6 +26,10 @@ mouse_cursor/size/borderless=false
 mouse_cursor/size/viewport_height=648
 mouse_cursor/size/viewport_width=1152
 mouse_cursor/main_scene="uid://bkdvn16v0n73l"
+
+[gui]
+
+theme/default_font_multichannel_signed_distance_field=true
 
 [layer_names]
 

@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ofwl135h67dv" path="res://assets/boss/boss_hand/BoxHand.png" id="2_4s0gw"]
 [ext_resource type="PackedScene" uid="uid://bx76hp6pft0pd" path="res://prefabs/hitbox/hitbox.tscn" id="3_ondc2"]
 [ext_resource type="Script" uid="uid://c2xc5w04hlffh" path="res://prefabs/components/push_component.gd" id="4_1ien0"]
+[ext_resource type="FontFile" uid="uid://by34nu83x6vs1" path="res://assets/fonts/Robot Crush.otf" id="5_4e61m"]
 [ext_resource type="Script" uid="uid://bu1r182oet3bp" path="res://prefabs/components/health_component.gd" id="5_vu8gx"]
 [ext_resource type="PackedScene" uid="uid://hj03sgu06i3p" path="res://prefabs/hurtbox/hurtbox.tscn" id="6_pn5vn"]
 [ext_resource type="Script" uid="uid://dhotctfcx1qeq" path="res://prefabs/abilities/hand_abilities/smash_wave/smash_wave_ability.gd" id="7_4s0gw"]
@@ -255,6 +256,31 @@ health_comp = NodePath("../../Components/HealthComponent")
 position = Vector2(49, -1)
 shape = SubResource("RectangleShape2D_wijo7")
 debug_color = Color(0.85907805, 0.16858426, 0.78760904, 0.41960785)
+
+[node name="ClickLabel" type="Label" parent="HandCharacterBody2D" unique_id=1737005645]
+offset_left = -94.0
+offset_top = -166.0
+offset_right = 176.0
+offset_bottom = -113.0
+theme_override_colors/font_color = Color(0.6627451, 0.47058824, 0.20784314, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("5_4e61m")
+theme_override_font_sizes/font_size = 48
+text = "CLiCK & DRaG
+          V"
+
+[node name="FistLabel" type="Label" parent="HandCharacterBody2D" unique_id=1666364395]
+visible = false
+offset_left = -94.0
+offset_top = -166.0
+offset_right = 277.0
+offset_bottom = -57.0
+theme_override_colors/font_color = Color(0.6627451, 0.47058824, 0.20784314, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("5_4e61m")
+theme_override_font_sizes/font_size = 48
+text = "RiGHT CLiCK (FiST)
+          V"
 
 [node name="Components" type="Node" parent="." unique_id=1379440192]
 

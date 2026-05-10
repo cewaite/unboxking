@@ -20,7 +20,7 @@ func check_smash() -> void:
 		var collision = parent.get_last_slide_collision()
 		var collider = collision.get_collider()
 		if "Floor" in collider.name:
-			print_debug("SMASH w/ velocity ", prev_velocity)
+			#print_debug("SMASH w/ velocity ", prev_velocity)
 			spawn_wave(collision.get_position())
 	
 func spawn_wave(wave_pos):

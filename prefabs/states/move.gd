@@ -9,7 +9,6 @@ class_name Move extends State
 func enter():
 	super()
 	legs_anim_player.play("running")
-	body_anim_player.play("running")
 
 func exit():
 	super()
@@ -17,7 +16,8 @@ func exit():
 
 func update(delta: float):
 	super(delta)
-	pass
+	if not body_anim_player.is_playing():
+		body_anim_player.play("running")
 
 func physics_update(delta: float):
 	move_comp.handle_move(delta, input_comp.get_movement_input())

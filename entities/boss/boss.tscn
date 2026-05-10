@@ -113,6 +113,18 @@ parent_boss = NodePath("../..")
 [node name="PunchHitbox" parent="RightHand/HandCharacterBody2D" index="2" unique_id=862417803]
 monitoring = true
 
+[node name="ClickLabel" parent="RightHand/HandCharacterBody2D" index="4" unique_id=1737005645]
+offset_left = 169.0
+offset_top = -169.0
+offset_right = 439.0
+offset_bottom = -60.0
+scale = Vector2(-1, 1)
+
+[node name="FistLabel" parent="RightHand/HandCharacterBody2D" index="5" unique_id=1666364395]
+offset_left = 170.0
+offset_right = 541.0
+scale = Vector2(-1, 1)
+
 [node name="HealthComponent" parent="RightHand/Components" parent_id_path=PackedInt32Array(559794993, 1379440192) index="1" unique_id=36457291 node_paths=PackedStringArray("health_bar")]
 health_bar = NodePath("../../../RightHandHealthBar")
 
@@ -127,6 +139,7 @@ right_hand = false
 health_bar = NodePath("../../../LeftHandHealthBar")
 
 [node name="HeadHealthBar" parent="." unique_id=761984071 instance=ExtResource("4_c5o42")]
+visible = false
 offset_left = -152.00002
 offset_top = -360.0
 offset_right = -52.000015

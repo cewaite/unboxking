@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bcgpdkwy4jcsi"]
+
+[ext_resource type="Script" uid="uid://cfor7wno3yf3" path="res://scenes/ui/fade/fade_effect.gd" id="1_fxjxe"]
+
+[node name="FadeEffect" type="Control" unique_id=1111834154]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_fxjxe")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2059539315]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)

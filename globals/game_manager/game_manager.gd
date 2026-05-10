@@ -1,6 +1,6 @@
 class_name GameManager extends Node
 
-#@export var ui_manager: UIManager
+@export var ui_manager: UIManager
 @export var level: Node2D
 
 @export var boss: Boss
@@ -15,9 +15,7 @@ func _ready() -> void:
 	load_game()
 
 func load_game():
-	#await ui_manager.fade_out()
-	await spawn_knight()
-	#await ui_manager.fade_in()
+	await ui_manager.fade_in()
 
 func spawn_knight():
 	Engine.time_scale = 1.0
@@ -32,3 +30,11 @@ func spawn_knight():
 
 func load_ui():
 	pass
+
+func _on_ui_manager_start() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
+	await ui_manager.fade_out()
+	ui_manager.main_menu.hide()
+	level.show()
+	await ui_manager.fade_in()
+	await spawn_knight()

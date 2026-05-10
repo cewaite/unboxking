@@ -29,12 +29,12 @@ func attack():
 		for attackcomp in other_attack_comps:
 			attackcomp.can_attack = false
 		#attack_hitbox.enable_collider()
-		if attack_indicator:
-			attack_indicator.show()
+		#if attack_indicator:
+			#attack_indicator.show()
 		await get_tree().create_timer(attack_duration).timeout
 		#attack_hitbox.disable_collider()
-		if attack_indicator:
-			attack_indicator.hide()
+		#if attack_indicator:
+			#attack_indicator.hide()
 		await get_tree().create_timer(attack_cooldown).timeout
 		can_attack = true
 		for attackcomp in other_attack_comps:

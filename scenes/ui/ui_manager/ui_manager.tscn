@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bajr7b11kd2yt"]
+
+[ext_resource type="Script" uid="uid://bgvlnjk1caxaj" path="res://scenes/ui/ui_manager/ui_manager.gd" id="1_1fsrh"]
+[ext_resource type="PackedScene" uid="uid://dlpib2lvyq6xr" path="res://scenes/ui/pause_menu/pause_menu.tscn" id="3_1fsrh"]
+[ext_resource type="PackedScene" uid="uid://cyuxyo84p4jp6" path="res://scenes/ui/main_menu/main_menu.tscn" id="4_rpsbb"]
+[ext_resource type="PackedScene" uid="uid://bcgpdkwy4jcsi" path="res://scenes/ui/fade/fade_effect.tscn" id="4_s4feh"]
+
+[node name="UIManager" type="CanvasLayer" unique_id=859618267 node_paths=PackedStringArray("fade_effect", "main_menu", "pause_menu")]
+script = ExtResource("1_1fsrh")
+fade_effect = NodePath("FadeEffect")
+main_menu = NodePath("MainMenu")
+pause_menu = NodePath("PauseMenu")
+
+[node name="MainMenu" parent="." unique_id=349348269 instance=ExtResource("4_rpsbb")]
+
+[node name="PauseMenu" parent="." unique_id=646636779 instance=ExtResource("3_1fsrh")]
+visible = false
+
+[node name="FadeEffect" parent="." unique_id=2012768616 instance=ExtResource("4_s4feh")]
+mouse_behavior_recursive = 1
+
+[connection signal="start_game" from="MainMenu" to="." method="_on_main_menu_start_game"]
+[connection signal="resume" from="PauseMenu" to="." method="_on_pause_menu_resume"]

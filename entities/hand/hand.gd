@@ -2,6 +2,9 @@ class_name Hand extends CharacterBody2D
 
 signal controlled_hand(hand)
 
+@onready var click_label: Label = $ClickLabel
+@onready var fist_label: Label = $FistLabel
+
 @export var parent_boss: Boss
 
 @export_group("Components")
@@ -49,6 +52,9 @@ func _physics_process(delta: float) -> void:
 	var accel: float
 	
 	if is_mouse_controlled:
+		if click_label.is_visible_in_tree():
+			click_label.hide()
+			fist_label.show()
 		accel = fist_accel if is_fist else normal_accel
 		var speed = fist_speed if is_fist else normal_speed
 		target_velocity = global_position.direction_to(mouse_pos) * speed
@@ -100,6 +106,8 @@ func _input(event: InputEvent) -> void:
 		if event.button_index == MOUSE_BUTTON_RIGHT:
 			if event.is_pressed() and is_mouse_controlled:
 				is_fist = true
+				if fist_label.is_visible_in_tree():
+					fist_label.hide()
 			else:
 				is_fist = false
 
@@ -117,7 +125,7 @@ func update_sprite(delta):
 			animation_player.play("fist_hand")
 	else:
 		if right_hand:
-			print_debug(deg_to_rad(rotation))
+			#print_debug(deg_to_rad(rotation))
 			#rotation = move_toward(rotation, deg_to_rad(-179.999), return_rotation_speed * delta)
 			rotation = deg_to_rad(-179.999)
 		else:

@@ -487,6 +487,42 @@ tracks/7/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../HorizontalAttackHitbox/ColorRect:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../VerticalAttackHitbox/ColorRect:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../VerticalAttackHitbox/CollisionShape2D:disabled")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_g5r5j"]
 resource_name = "horizontal_attack"
@@ -550,6 +586,18 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../HorizontalAttackHitbox/ColorRect:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
 }
 
 [sub_resource type="Animation" id="Animation_klefb"]
@@ -670,12 +718,89 @@ tracks/3/keys = {
 "values": [0.0, -1.2415619, 0.0, 1.6790156, 0.0]
 }
 
+[sub_resource type="Animation" id="Animation_kqye8"]
+resource_name = "vert_attack"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodySprites/SwordSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.1, 1.2, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-22.452642, -27.675), Vector2(4.0000014, -38.000004), Vector2(9.000002, -45.000008), Vector2(-20.000002, -39), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BodySprites/ShoulderSprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.1, 1.2, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-22.452642, -27.675), Vector2(8.819422, -40.817432), Vector2(8.819422, -40.817432), Vector2(-16.547274, -35.53818), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BodySprites/SwordSprite2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.1, 1.2, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.7911785, 4.5464745, 3.290927, 1.9554527, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BodySprites/ShoulderSprite2D:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.1, 1.2, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.7911785, 3.587199, 3.587199, 2.2517247, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../VerticalAttackHitbox/ColorRect:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../VerticalAttackHitbox/CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_evwfg"]
 _data = {
 &"RESET": SubResource("Animation_g6wjf"),
 &"horizontal_attack": SubResource("Animation_g5r5j"),
 &"idle": SubResource("Animation_klefb"),
-&"running": SubResource("Animation_evwfg")
+&"running": SubResource("Animation_evwfg"),
+&"vert_attack": SubResource("Animation_kqye8")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jtaml"]
@@ -683,8 +808,8 @@ radius = 20.0
 height = 100.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wb40x"]
-radius = 20.0
-height = 90.0
+radius = 13.0
+height = 74.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bakul"]
 radius = 200.0
@@ -731,10 +856,13 @@ dodge_comp = NodePath("../../Components/DodgeComponent")
 script = ExtResource("6_wb40x")
 attack_comp = NodePath("../../Components/HorizontalAttackComponent")
 body_anim_player = NodePath("../../Animations/BodyAnimationPlayer")
+anim_name = "horizontal_attack"
 
-[node name="VerticalAttack" type="Node" parent="StateMachine" unique_id=1182101785 node_paths=PackedStringArray("attack_comp")]
+[node name="VerticalAttack" type="Node" parent="StateMachine" unique_id=1182101785 node_paths=PackedStringArray("attack_comp", "body_anim_player")]
 script = ExtResource("6_wb40x")
 attack_comp = NodePath("../../Components/VerticalAttackComponent")
+body_anim_player = NodePath("../../Animations/BodyAnimationPlayer")
+anim_name = "vert_attack"
 
 [node name="Components" type="Node" parent="." unique_id=682901996]
 
@@ -804,7 +932,7 @@ other_attack_comps = [NodePath("../HorizontalAttackComponent")]
 attack_hitbox = NodePath("../../VerticalAttackHitbox")
 attack_detector = NodePath("../../VerticalAttackDetector")
 attack_indicator = NodePath("../../VerticalAttackHitbox/ColorRect")
-attack_duration = 0.2
+attack_duration = 2.0
 attack_cooldown = 1.0
 
 [node name="ImpactFrameComponent" type="Node" parent="Components" unique_id=1135400390]
@@ -907,17 +1035,18 @@ shape = SubResource("CapsuleShape2D_jtaml")
 collider = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VerticalAttackHitbox" unique_id=316990480]
-position = Vector2(0, -75)
+position = Vector2(0, -67)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_wb40x")
+disabled = true
 debug_color = Color(0.64989084, 0.29958317, 0.04346002, 0.41960785)
 
 [node name="ColorRect" type="ColorRect" parent="VerticalAttackHitbox" unique_id=1408012924]
 visible = false
-offset_left = -31.0
-offset_top = -85.0
-offset_right = 34.0
-offset_bottom = -63.0
+offset_left = -33.0
+offset_top = -78.0
+offset_right = 32.0
+offset_bottom = -56.0
 color = Color(0.7722763, 0, 0.020773713, 1)
 
 [node name="VerticalAttackDetector" type="Area2D" parent="." unique_id=1898221273]
@@ -926,7 +1055,7 @@ collision_mask = 2
 input_pickable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VerticalAttackDetector" unique_id=544295637]
-position = Vector2(0, -75)
+position = Vector2(0, -67)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_wb40x")
 debug_color = Color(0.64989084, 0.29958317, 0.04346002, 0.41960785)
@@ -935,16 +1064,16 @@ debug_color = Color(0.64989084, 0.29958317, 0.04346002, 0.41960785)
 collider = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HorizontalAttackHitbox" unique_id=1239251598]
-position = Vector2(50, 0)
+position = Vector2(34, 0)
 shape = SubResource("CapsuleShape2D_wb40x")
 debug_color = Color(0.7764706, 0, 0.20784314, 0.41960785)
 
 [node name="ColorRect" type="ColorRect" parent="HorizontalAttackHitbox" unique_id=207715816]
 visible = false
-offset_left = 35.0
-offset_top = -30.0
-offset_right = 65.0
-offset_bottom = 30.0
+offset_left = 22.0
+offset_top = -35.0
+offset_right = 46.0
+offset_bottom = 34.0
 color = Color(0.7722763, 0, 0.020773713, 1)
 
 [node name="HorizontalAttackDetector" type="Area2D" parent="." unique_id=1720648753]
@@ -953,7 +1082,7 @@ collision_mask = 2
 input_pickable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HorizontalAttackDetector" unique_id=1522987089]
-position = Vector2(50, 0)
+position = Vector2(34, 0)
 shape = SubResource("CapsuleShape2D_wb40x")
 debug_color = Color(0.64989084, 0.29958317, 0.04346002, 0.41960785)
 

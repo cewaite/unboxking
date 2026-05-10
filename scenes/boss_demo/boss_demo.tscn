@@ -3,11 +3,17 @@
 [ext_resource type="Texture2D" uid="uid://dy38k1lhabfrh" path="res://assets/levels/Box_Arena.png" id="1_7vhjq"]
 [ext_resource type="PackedScene" uid="uid://bxbtp4fmhvjn3" path="res://entities/boss/boss.tscn" id="1_x5frj"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_x5frj"]
-size = Vector2(1280, 40)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_njmbt"]
+size = Vector2(1797, 34)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7vhjq"]
-size = Vector2(20, 720)
+size = Vector2(36, 720)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d054q"]
+size = Vector2(731, 33)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x5frj"]
+size = Vector2(1280, 40)
 
 [node name="BossDemo" type="Node2D" unique_id=830802321]
 
@@ -25,7 +31,8 @@ collision_layer = 64
 collision_mask = 127
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FloorStaticBody2D" unique_id=156487415]
-shape = SubResource("RectangleShape2D_x5frj")
+position = Vector2(258.5, 3)
+shape = SubResource("RectangleShape2D_njmbt")
 
 [node name="ColorRect" type="ColorRect" parent="FloorStaticBody2D" unique_id=1374575392]
 visible = false
@@ -46,13 +53,15 @@ color = Color(0.11415807, 0.11415809, 0.11415807, 1)
 collision_layer = 64
 collision_mask = 127
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WallsStaticBody2D" unique_id=1664426896]
-position = Vector2(0, 354)
+[node name="LeftCollisionShape2D" type="CollisionShape2D" parent="WallsStaticBody2D" unique_id=1664426896]
+position = Vector2(-8, 354)
 shape = SubResource("RectangleShape2D_7vhjq")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="WallsStaticBody2D" unique_id=837337456]
-position = Vector2(1280, 354)
-shape = SubResource("RectangleShape2D_7vhjq")
+[node name="RightCollisionShape2D" type="CollisionShape2D" parent="WallsStaticBody2D" unique_id=837337456]
+position = Vector2(1294.5, 348.5)
+rotation = -1.5707964
+shape = SubResource("RectangleShape2D_d054q")
+one_way_collision = true
 
 [node name="CeilingStaticBody2D" type="StaticBody2D" parent="." unique_id=1911627791]
 position = Vector2(640, 0)
@@ -66,4 +75,4 @@ shape = SubResource("RectangleShape2D_x5frj")
 position = Vector2(640, 425)
 
 [node name="KnightSpawnMarker2D" type="Marker2D" parent="." unique_id=1582389302]
-position = Vector2(637, 409)
+position = Vector2(1539, 599)
